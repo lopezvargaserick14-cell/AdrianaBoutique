@@ -69,11 +69,15 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
              </div>
             </Link>
 
-            <div className="hidden md:flex gap-6 lg:gap-10 text-[11px] uppercase tracking-[0.15em] font-light transition-colors duration-500">
+            <div className="hidden xl:flex gap-4 lg:gap-6 text-[9px] lg:text-[10px] uppercase tracking-[0.15em] font-light transition-colors duration-500">
               <Link to="/categoria/novedades" className="hover:opacity-50 transition-opacity whitespace-nowrap">Novedades</Link>
+              <Link to="/categoria/best-sellers" className="hover:opacity-50 transition-opacity whitespace-nowrap">Best Sellers</Link>
               <Link to="/categoria/mujer" className="hover:opacity-50 transition-opacity whitespace-nowrap">Mujer</Link>
               <Link to="/categoria/hombre" className="hover:opacity-50 transition-opacity whitespace-nowrap">Hombre</Link>
-              <Link to="/categoria/arte" className="hover:opacity-50 transition-opacity whitespace-nowrap">Arte & Regalos</Link>
+              <Link to="/categoria/bolsos-canastos" className="hover:opacity-50 transition-opacity whitespace-nowrap">Canastos & Bolsos</Link>
+              <Link to="/categoria/bufandas" className="hover:opacity-50 transition-opacity whitespace-nowrap">Bufandas</Link>
+              <Link to="/categoria/arte" className="hover:opacity-50 transition-opacity whitespace-nowrap">Arte</Link>
+              <Link to="/categoria/gift-guide" className="hover:opacity-50 transition-opacity whitespace-nowrap text-[#8B6914]">Gift Guide</Link>
             </div>
           </div>
 
@@ -107,9 +111,13 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
           </div>
           <div className="flex flex-col gap-8 text-lg font-light uppercase tracking-[0.1em]">
              <Link to="/categoria/novedades" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Novedades</Link>
+             <Link to="/categoria/best-sellers" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Best Sellers</Link>
              <Link to="/categoria/mujer" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Mujer</Link>
              <Link to="/categoria/hombre" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Hombre</Link>
-             <Link to="/categoria/arte" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Arte & Regalos</Link>
+             <Link to="/categoria/bolsos-canastos" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Canastos & Bolsos</Link>
+             <Link to="/categoria/bufandas" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Bufandas</Link>
+             <Link to="/categoria/arte" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Arte</Link>
+             <Link to="/categoria/gift-guide" onClick={() => setIsMenuOpen(false)} className="hover:text-[#8B6914] text-[#8B6914]">Gift Guide</Link>
              <div className="w-full h-px bg-gray-100 my-4"></div>
              <button onClick={() => { setIsMenuOpen(false); onOpenProfile(); }} className="text-left hover:text-gray-500">Mi Perfil</button>
           </div>
