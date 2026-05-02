@@ -80,15 +80,16 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'm6',
-    name: 'Vestido "Selva Esmeralda"',
-    price: 590,
-    formattedPrice: '€ 590',
+    name: 'Canasto en Iraca',
+    price: 60000,
+    formattedPrice: '$ 60.000',
     category: 'mujer',
     images: [
-      '/images/products/7.jpeg'
+      '/images/products/canasto-iraca-1.jpg',
+      '/images/products/canasto-iraca-2.jpg'
     ],
-    description: 'La joya de la corona. Un elegante y favorecedor vestido negro adornado con dos imponentes guacamayas hiperrealistas pintadas a mano, rodeadas de una exótica corona floral que marca y estiliza la cintura. Serás el centro de atención estés donde estés.',
-    details: ['Algodón orgánico de caída perfecta', 'Obra de arte simétrica pintada a mano', 'Mangas estructuradas', 'Corte en A favorecedor'],
+    description: 'Una exquisita pieza artesanal tejida en palma de Iraca por Tuma Victalia, artesana indígena de la familia Yukuna. Cada canasto es customizado e intervenido por Adriana Barrera con flores coloridas, creando una obra única que combina la herencia ancestral con el arte contemporáneo.',
+    details: ['Tejido en palma de Iraca', 'Elaborado por Tuma Victalia (Comunidad Yukuna)', 'Customizado por Adriana Barrera', 'Pieza única'],
     isNew: true
   },
   {
