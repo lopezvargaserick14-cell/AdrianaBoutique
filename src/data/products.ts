@@ -53,16 +53,16 @@ export const PRODUCTS: Product[] = [
     isNew: true
   },
   {
-    id: 'm4',
-    name: 'Top Halter "Jardín de Noche"',
-    price: 245,
-    formattedPrice: '€ 245',
-    category: 'mujer',
+    id: 'a3',
+    name: 'Pavito Migratorio',
+    price: 120000,
+    formattedPrice: '$ 120.000',
+    category: 'arte',
     images: [
-      '/images/products/3.jpeg'
+      '/images/products/pavito-migratorio.jpg'
     ],
-    description: 'Puro romance y misterio. Este crop top negro estilo halter abraza tu figura mientras exhibe en el bajo una espectacular obra de arte pintada a mano: delicados colibríes en vuelo sobre ramas doradas. Una prenda joya para noches inolvidables.',
-    details: ['Lino de alta gama transpirable', 'Pintura textil artística sellada y duradera', 'Ribete ocre tejido inferior', 'Ajuste de lazos en el cuello'],
+    description: 'Una encantadora obra de arte que captura la belleza del pavito migratorio. Pintado en óleo sobre lienzo con detalles delicados y colores vibrantes que le dan vida al espacio. Perfecto para aportar un toque de naturaleza y elegancia a cualquier rincón de tu hogar.',
+    details: ['Técnica: Óleo sobre lienzo', 'Dimensiones: 10 x 10 cm', 'Pieza original única', 'Pintado a mano por Adriana Barrera'],
     isNew: true
   },
   {
