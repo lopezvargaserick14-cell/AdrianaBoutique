@@ -13,15 +13,17 @@ export interface Product {
 export const PRODUCTS: Product[] = [
   {
     id: 'm1',
-    name: 'Mochila Wayuu "Vibranza Neón"',
-    price: 280,
-    formattedPrice: '€ 280',
+    name: 'Vestido Guacamayas',
+    price: 250000,
+    formattedPrice: '$ 250.000',
     category: 'mujer',
     images: [
-      '/images/products/5.jpeg'
+      '/images/products/vestido-guacamayas-3.jpg',
+      '/images/products/vestido-guacamayas-1.jpg',
+      '/images/products/vestido-guacamayas-2.jpg'
     ],
-    description: 'Una verdadera obra de arte tejida creada para robar miradas. Su vibrante contraste en fucsia intenso y verde esmeralda con patrones geométricos ancestrales es la definición del lujo artesanal. Cada hilo cuenta una historia de tradición, elevando cualquier look básico a uno espectacular.',
-    details: ['Tejido premium tradicional', 'Colores neón ultra-resistentes', 'Doble gaza (correa) tejida', 'Pieza única irrepetible'],
+    description: 'Una obra de arte que se lleva puesta. Sobre un fondo negro profundo, dos guacamayas hiperrealistas pintadas a mano con Acriltex sobre lino olán despliegan su plumaje con una vitalidad que roba el aliento. La flora tropical que las envuelve fluye hasta el bajo del vestido, convirtiendo cada movimiento en una pintura viva. Diseñado para la mujer que no necesita hablar para ser escuchada.',
+    details: ['Técnica: Acriltex sobre Lino Olán', 'Talla: L', 'Pieza única — irrepetible', 'Pintado a mano por Adriana Barrera'],
     isNew: true
   },
   {
