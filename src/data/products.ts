@@ -40,15 +40,16 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'm3',
-    name: 'Mochila Wayuu "Amanecer Andino"',
-    price: 320,
-    formattedPrice: '€ 320',
+    name: 'Blusa Lazo Corta',
+    price: 250000,
+    formattedPrice: '$ 250.000',
     category: 'mujer',
     images: [
-      '/images/products/4.jpeg'
+      '/images/products/blusa-lazo-corta-1.jpg',
+      '/images/products/blusa-lazo-corta-2.jpg'
     ],
-    description: 'Intensa, audaz y profundamente cultural. Sus colores que imitan el fuego y el sol del atardecer (rojo profundo, morado, amarillo y naranja) crean un efecto hipnótico. Un bolso que no solo complementa tu estilo, sino que lo define por completo.',
-    details: ['Tejido de un solo hilo (máxima calidad)', 'Patrón radial expansivo', 'Borlas premium multicolor', 'Cordón trenzado a mano'],
+    description: 'Ligereza hecha arte. Esta blusa corta en lino olán blanco puro atrapa la esencia del verano con un colibrí pintado a mano a Acriltex que parece suspendido en el tiempo. El escote fruncido con lazos al cuello le da ese toque bohemio y femenino que ninguna otra prenda puede replicar. Talla única — diseñada para fluir sobre cualquier figura.',
+    details: ['Técnica: Acriltex sobre Lino Olán', 'Color: Blanco', 'Talla única', 'Pintado a mano por Adriana Barrera'],
     isNew: true
   },
   {

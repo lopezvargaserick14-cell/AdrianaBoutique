@@ -50,7 +50,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
           {product.name}
         </h3>
         <div className="w-4 h-[1px] bg-gray-200 group-hover:w-12 transition-all duration-700"></div>
-        <span className="text-gray-400 font-light text-[12px] tracking-widest">{product.formattedPrice}</span>
+        <span className="text-[#8B6914] font-medium text-[13px] tracking-widest">{product.formattedPrice}</span>
       </div>
     </motion.div>
   );
