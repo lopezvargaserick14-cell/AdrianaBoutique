@@ -5,6 +5,7 @@ import { motion } from 'motion/react';
 import SizeGuideModal from '../components/ui/SizeGuideModal';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { getPrices } from '../utils/currency';
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -85,9 +86,16 @@ export default function ProductPage() {
             {product.name}
           </motion.h1>
           
-          <div className="flex items-center gap-4 mb-12">
-            <span className="text-2xl md:text-3xl font-light text-gray-900">{product.formattedPrice}</span>
-            <div className="h-px flex-1 bg-gray-100"></div>
+          <div className="flex flex-col gap-1 mb-12">
+            <div className="flex items-center gap-4">
+              <span className="text-2xl md:text-3xl font-light text-gray-900">
+                {getPrices(product.price, product.formattedPrice).formattedCop}
+              </span>
+              <div className="h-px flex-1 bg-gray-100"></div>
+            </div>
+            <span className="text-sm text-gray-400 font-light ml-1">
+              (Aprox. {getPrices(product.price, product.formattedPrice).formattedEur})
+            </span>
           </div>
 
           <div className="space-y-8 mb-16">
@@ -148,9 +156,8 @@ export default function ProductPage() {
                   return;
                 }
                 console.log("Acción: Comprar ahora");
-                addToCart(product, selectedSize);
-                // Forzamos la navegación
-                window.location.href = '/checkout';
+                addToCart(product, selectedSize, true);
+                setTimeout(() => navigate('/checkout'), 100);
               }}
               className="w-full border-2 border-black text-black hover:bg-black hover:text-white py-6 uppercase tracking-[0.3em] text-[11px] font-bold transition-all duration-500 active:scale-[0.98] cursor-pointer"
             >

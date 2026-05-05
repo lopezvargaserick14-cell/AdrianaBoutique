@@ -8,7 +8,7 @@ interface CartItem extends Product {
 
 interface CartContextType {
   cart: CartItem[];
-  addToCart: (product: Product, size: string) => void;
+  addToCart: (product: Product, size: string, preventOpen?: boolean) => void;
   removeFromCart: (productId: string, size: string) => void;
   clearCart: () => void;
   totalItems: number;
@@ -21,8 +21,15 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const savedCart = localStorage.getItem('adriana-cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem('adriana-cart', JSON.stringify(cart));
+  }, [cart]);
 
   const openCart = () => {
     console.log("Abriendo carrito...");
@@ -30,7 +37,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
   const closeCart = () => setIsCartOpen(false);
 
-  const addToCart = (product: Product, size: string) => {
+  const addToCart = (product: Product, size: string, preventOpen: boolean = false) => {
     console.log("Añadiendo producto:", product.name, "Talla:", size);
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id && item.selectedSize === size);
@@ -44,7 +51,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       return [...prevCart, { ...product, selectedSize: size, quantity: 1 }];
     });
     // Abrimos el carrito después de un pequeño delay para asegurar que el estado se actualizó
-    setTimeout(() => openCart(), 100);
+    if (!preventOpen) {
+      setTimeout(() => openCart(), 100);
+    }
   };
 
 

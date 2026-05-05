@@ -1,6 +1,7 @@
 import { X, Trash2 } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
+import { getPrices } from '../../utils/currency';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -9,7 +10,9 @@ interface CartDrawerProps {
 
 export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
   const navigate = useNavigate();
-  const { cart, removeFromCart, subtotal, totalItems } = useCart();
+  const { cart, removeFromCart, totalItems } = useCart();
+  const subtotalCOP = cart.reduce((sum, item) => sum + getPrices(item.price, item.formattedPrice, item.quantity).cop, 0);
+  const subtotalEUR = cart.reduce((sum, item) => sum + getPrices(item.price, item.formattedPrice, item.quantity).eur, 0);
 
   if (!isOpen) return null;
 
@@ -60,8 +63,13 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                     <p>Talla: <span className="text-black font-medium">{item.selectedSize}</span></p>
                     <p>Cantidad: <span className="text-black font-medium">{item.quantity}</span></p>
                   </div>
-                  <div className="flex justify-between items-end mt-4">
-                    <span className="text-sm tracking-widest font-medium">€ {item.price * item.quantity}</span>
+                  <div className="flex flex-col items-end mt-4">
+                    <span className="text-sm tracking-widest font-medium">
+                      {getPrices(item.price, item.formattedPrice, item.quantity).formattedCop}
+                    </span>
+                    <span className="text-[10px] text-gray-400">
+                      (Aprox. {getPrices(item.price, item.formattedPrice, item.quantity).formattedEur})
+                    </span>
                   </div>
                 </div>
               </div>
@@ -74,7 +82,10 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             <div className="space-y-2">
               <div className="flex justify-between items-center uppercase tracking-[0.2em] text-[11px]">
                 <span className="text-gray-400">Subtotal</span>
-                <span className="font-bold">€ {subtotal}</span>
+                <div className="flex flex-col items-end">
+                  <span className="font-bold">$ {Math.round(subtotalCOP).toLocaleString('es-CO').replace(',', '.')}</span>
+                  <span className="text-[9px] text-gray-400">(Aprox. € {subtotalEUR.toFixed(2).replace('.', ',')})</span>
+                </div>
               </div>
               <div className="flex justify-between items-center uppercase tracking-[0.2em] text-[11px]">
                 <span className="text-gray-400">Envío</span>
@@ -86,7 +97,10 @@ export default function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
             
             <div className="flex justify-between items-center uppercase tracking-[0.2em] text-[12px] font-bold">
               <span>Total</span>
-              <span className="text-lg">€ {subtotal}</span>
+              <div className="flex flex-col items-end">
+                <span className="text-lg">$ {Math.round(subtotalCOP).toLocaleString('es-CO').replace(',', '.')}</span>
+                <span className="text-[10px] text-gray-400 font-normal">(Aprox. € {subtotalEUR.toFixed(2).replace('.', ',')})</span>
+              </div>
             </div>
 
             <button 

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { CheckCircle, ArrowLeft, CreditCard, Building2, Wallet } from 'lucide-react';
+import { getPrices } from '../utils/currency';
 
 const WOMPI_PUBLIC_KEY = import.meta.env.VITE_WOMPI_PUBLIC_KEY || '';
 const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID || 'test';
@@ -14,7 +15,9 @@ export default function CheckoutPage() {
   const [step, setStep] = useState<Step>('info');
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('');
   const [formData, setFormData] = useState({ name: '', lastName: '', email: '', address: '', city: '', phone: '' });
-  const { cart, subtotal, clearCart } = useCart();
+  const { cart, clearCart } = useCart();
+  const subtotalCOP = cart.reduce((sum, item) => sum + getPrices(item.price, item.formattedPrice, item.quantity).cop, 0);
+  const subtotalEUR = cart.reduce((sum, item) => sum + getPrices(item.price, item.formattedPrice, item.quantity).eur, 0);
   const navigate = useNavigate();
   const wompiRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +42,7 @@ export default function CheckoutPage() {
     script.setAttribute('data-render', 'button');
     script.setAttribute('data-public-key', WOMPI_PUBLIC_KEY);
     script.setAttribute('data-currency', 'COP');
-    script.setAttribute('data-amount-in-cents', String(subtotal * 100));
+    script.setAttribute('data-amount-in-cents', String(Math.round(subtotalCOP) * 100));
     script.setAttribute('data-reference', `ADRIANA-${Date.now()}`);
     script.setAttribute('data-customer-data:email', formData.email);
     script.setAttribute('data-customer-data:full-name', `${formData.name} ${formData.lastName}`);
@@ -47,7 +50,7 @@ export default function CheckoutPage() {
     script.setAttribute('data-payment-methods', paymentMethod === 'pse' ? 'PSE' : 'CARD');
 
     wompiRef.current.appendChild(script);
-  }, [step, paymentMethod, subtotal]);
+  }, [step, paymentMethod, subtotalCOP]);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -201,7 +204,7 @@ export default function CheckoutPage() {
                             intent: 'CAPTURE',
                             purchase_units: [{
                               amount: {
-                                value: (subtotal / 4000).toFixed(2), // Conversión COP → USD aproximada
+                                value: (subtotalCOP / 4000).toFixed(2), // Conversión COP → USD aproximada
                                 currency_code: 'USD',
                               },
                               description: `Adriana Barrera Boutique — ${cart.length} artículo(s)`,
@@ -252,15 +255,21 @@ export default function CheckoutPage() {
                       <span className="text-[11px] uppercase tracking-[0.1em] text-black font-medium mb-1">{item.name}</span>
                       <span className="text-[10px] text-gray-400 uppercase tracking-widest">Talla: {item.selectedSize}</span>
                       <span className="text-[10px] text-gray-400 uppercase tracking-widest">Cant: {item.quantity}</span>
-                      <span className="text-sm mt-auto font-light">€ {item.price * item.quantity}</span>
+                      <span className="text-sm mt-auto font-light">
+                        {getPrices(item.price, item.formattedPrice, item.quantity).formattedCop}
+                        <br/><span className="text-[10px] text-gray-400">(Aprox. {getPrices(item.price, item.formattedPrice, item.quantity).formattedEur})</span>
+                      </span>
                     </div>
                   </div>
                 ))}
               </div>
               <div className="space-y-3 text-[11px] uppercase tracking-[0.1em] mb-8">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-center">
                   <span className="text-gray-400">Subtotal</span>
-                  <span>€ {subtotal}</span>
+                  <div className="flex flex-col items-end text-black font-medium">
+                    <span>$ {Math.round(subtotalCOP).toLocaleString('es-CO').replace(',', '.')}</span>
+                    <span className="text-[9px] text-gray-400 font-normal">(Aprox. € {subtotalEUR.toFixed(2).replace('.', ',')})</span>
+                  </div>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Envío</span>
@@ -269,7 +278,10 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between items-center pt-6 border-t border-gray-200 uppercase tracking-[0.15em]">
                 <span className="text-sm font-bold">Total</span>
-                <span className="text-xl font-bold">€ {subtotal}</span>
+                <div className="flex flex-col items-end">
+                  <span className="text-xl font-bold">$ {Math.round(subtotalCOP).toLocaleString('es-CO').replace(',', '.')}</span>
+                  <span className="text-[10px] text-gray-400 font-normal">(Aprox. € {subtotalEUR.toFixed(2).replace('.', ',')})</span>
+                </div>
               </div>
             </div>
           </div>
