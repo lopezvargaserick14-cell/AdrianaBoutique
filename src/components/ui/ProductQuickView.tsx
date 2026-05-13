@@ -60,27 +60,44 @@ export default function ProductQuickView({ product, onClose }: ProductQuickViewP
               <p className="text-xl font-light text-gray-900 mb-8">
                 {product.formattedPrice}
               </p>
-              <p className="text-gray-500 font-light leading-relaxed text-sm mb-10">
-                {product.description}
-              </p>
-
-              <div className="space-y-4 mb-10">
-                <h4 className="uppercase tracking-widest text-[9px] font-bold text-black border-b border-gray-100 pb-2">Destacados</h4>
-                <ul className="grid grid-cols-1 gap-2">
-                  {product.details.slice(0, 3).map((detail, idx) => (
-                    <li key={idx} className="text-[12px] text-gray-400 flex items-center gap-2">
-                      <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
+              
+              <div className="space-y-6 mb-10">
+                <p className="text-gray-500 font-light leading-relaxed text-sm">
+                  {product.description}
+                </p>
+                
+                <div className="space-y-3">
+                  <h4 className="uppercase tracking-widest text-[9px] font-bold text-black border-b border-gray-100 pb-2">Especificaciones</h4>
+                  <ul className="grid grid-cols-1 gap-2">
+                    {product.details.map((detail, idx) => (
+                      <li key={idx} className="text-[12px] text-gray-400 flex items-center gap-2">
+                        <span className="w-1 h-1 bg-gray-300 rounded-full"></span>
+                        {detail}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
 
             <div className="flex flex-col gap-4 mt-8">
-              <button className="w-full bg-black text-white py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-gray-800 transition-colors flex items-center justify-center gap-3 group">
+              <button 
+                onClick={() => {
+                  const size = product.isOneSize ? 'Única' : product.hasSizes ? null : 'N/A';
+                  if (product.hasSizes && !product.isOneSize) {
+                    // Redirect to full page if multiple sizes needed
+                    onClose();
+                    window.location.href = `/producto/${product.id}`;
+                  } else {
+                    // Import useCart if needed or just redirect
+                    onClose();
+                    window.location.href = `/producto/${product.id}`;
+                  }
+                }}
+                className="w-full bg-black text-white py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-gray-800 transition-colors flex items-center justify-center gap-3 group"
+              >
                 <ShoppingBag size={14} className="group-hover:-translate-y-0.5 transition-transform" />
-                Añadir al carrito
+                {product.hasSizes && !product.isOneSize ? 'Seleccionar Talla' : 'Añadir al carrito'}
               </button>
               <Link 
                 to={`/producto/${product.id}`}

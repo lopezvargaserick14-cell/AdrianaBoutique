@@ -49,8 +49,15 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
         <h3 className="font-sans text-[11px] text-black uppercase tracking-[0.18em] font-light mt-1 group-hover:text-gray-500 transition-colors duration-500">
           {product.name}
         </h3>
-        <div className="w-4 h-[1px] bg-gray-200 group-hover:w-12 transition-all duration-700"></div>
         <span className="text-[#8B6914] font-medium text-[13px] tracking-widest">{product.formattedPrice}</span>
+        
+        <div className="mt-3 flex flex-col gap-1">
+          {product.details.slice(0, 2).map((detail, idx) => (
+            <span key={idx} className="text-[9px] text-gray-400 uppercase tracking-widest font-light">
+              {detail}
+            </span>
+          ))}
+        </div>
       </div>
     </motion.div>
   );

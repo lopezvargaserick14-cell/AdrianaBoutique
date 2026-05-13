@@ -16,10 +16,19 @@ export default function ProductPage() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
-  // Scroll to top on load
+  // Scroll to top on load and set default size
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [id]);
+    if (product) {
+      if (product.isOneSize) {
+        setSelectedSize('Única');
+      } else if (!product.hasSizes) {
+        setSelectedSize('N/A');
+      } else {
+        setSelectedSize(null);
+      }
+    }
+  }, [id, product]);
 
   if (!product) {
     return (
@@ -98,35 +107,74 @@ export default function ProductPage() {
             </span>
           </div>
 
-          <div className="space-y-8 mb-16">
-            <p className="text-gray-600 font-light leading-relaxed text-lg md:text-xl italic">
-              "{product.description}"
+          <div className="space-y-8 mb-12">
+            <p className="text-gray-600 font-light leading-relaxed text-lg">
+              {product.description}
             </p>
+            <div className="flex flex-col gap-3">
+              {product.details.map((detail, idx) => (
+                <div key={idx} className="flex items-center gap-3 text-sm text-gray-500">
+                  <span className="w-1 h-1 bg-black rounded-full"></span>
+                  {detail}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Size Selector */}
-          <div className="mb-16">
+          <div className="mb-16 relative">
             <div className="flex justify-between items-center mb-6">
-              <span className="uppercase tracking-[0.2em] text-[11px] font-bold text-black">Seleccionar Talla</span>
-              <button 
-                onClick={() => setIsSizeGuideOpen(true)}
-                className="uppercase tracking-[0.2em] text-[10px] text-gray-500 underline decoration-gray-300 underline-offset-8 hover:text-black transition-colors"
-              >
-                Ver Guía de Tallas
-              </button>
-            </div>
-            <div className="grid grid-cols-4 gap-4">
-              {sizes.map(size => (
+              <span className="uppercase tracking-[0.2em] text-[11px] font-bold text-black">
+                {product.hasSizes ? 'Seleccionar Talla' : 'Talla'}
+              </span>
+              {product.hasSizes && !product.isOneSize && (
                 <button 
-                  key={size}
-                  translate="no"
-                  onClick={() => setSelectedSize(size)}
-                  className={`border py-4 text-sm tracking-widest transition-all duration-500 ${selectedSize === size ? 'border-black bg-black text-white' : 'border-gray-200 text-gray-400 hover:border-black hover:text-black'}`}
+                  onClick={() => setIsSizeGuideOpen(true)}
+                  className="uppercase tracking-[0.2em] text-[10px] text-gray-500 underline decoration-gray-300 underline-offset-8 hover:text-black transition-colors"
                 >
-                  {size}
+                  Ver Guía de Tallas
                 </button>
-              ))}
+              )}
             </div>
+
+            <div className="grid grid-cols-4 gap-4 relative">
+              {product.hasSizes ? (
+                product.isOneSize ? (
+                  <button 
+                    translate="no"
+                    onClick={() => setSelectedSize('Única')}
+                    className="col-span-4 border py-4 text-sm tracking-widest border-black bg-black text-white transition-all duration-500"
+                  >
+                    Talla Única
+                  </button>
+                ) : (
+                  sizes.map(size => (
+                    <button 
+                      key={size}
+                      translate="no"
+                      onClick={() => setSelectedSize(size)}
+                      className={`border py-4 text-sm tracking-widest transition-all duration-500 ${selectedSize === size ? 'border-black bg-black text-white' : 'border-gray-200 text-gray-400 hover:border-black hover:text-black'}`}
+                    >
+                      {size}
+                    </button>
+                  ))
+                )
+              ) : (
+                <>
+                  {/* Crossed out effect for Arte/No Sizes */}
+                  <div className="col-span-4 border border-gray-100 py-4 text-sm tracking-widest text-gray-300 relative overflow-hidden flex items-center justify-center">
+                    No aplica
+                    <div className="absolute top-1/2 left-0 w-full h-[2px] bg-red-500/40 -rotate-6"></div>
+                  </div>
+                </>
+              )}
+            </div>
+            
+            {!product.hasSizes && (
+               <div className="mt-4 text-[10px] text-red-500/60 uppercase tracking-widest font-medium">
+                 * Esta pieza no requiere selección de talla
+               </div>
+            )}
           </div>
 
           {/* Add to Cart Actions */}

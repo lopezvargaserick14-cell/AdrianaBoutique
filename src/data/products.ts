@@ -8,6 +8,8 @@ export interface Product {
   description: string;
   details: string[];
   isNew?: boolean;
+  isOneSize?: boolean;
+  hasSizes?: boolean;
 }
 
 export const PRODUCTS: Product[] = [
@@ -22,9 +24,11 @@ export const PRODUCTS: Product[] = [
       '/images/products/vestido-guacamayas-1.jpg',
       '/images/products/vestido-guacamayas-2.jpg'
     ],
-    description: 'Una obra de arte que se lleva puesta. Sobre un fondo negro profundo, dos guacamayas hiperrealistas pintadas a mano con Acriltex sobre lino olán despliegan su plumaje con una vitalidad que roba el aliento. La flora tropical que las envuelve fluye hasta el bajo del vestido, convirtiendo cada movimiento en una pintura viva. Diseñado para la mujer que no necesita hablar para ser escuchada.',
-    details: ['Técnica: Acriltex sobre Lino Olán', 'Talla: L', 'Pieza única — irrepetible', 'Pintado a mano por Adriana Barrera'],
-    isNew: true
+    description: 'Vestido en lino olán con guacamayas pintadas a mano.',
+    details: ['Técnica: Acriltex sobre Lino Olán', 'Talla: L (Pieza única)', 'Composición: 100% Lino', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: true,
+    hasSizes: true
   },
   {
     id: 'm2',
@@ -35,8 +39,10 @@ export const PRODUCTS: Product[] = [
     images: [
       '/images/products/6.jpeg'
     ],
-    description: 'El accesorio definitivo para la sofisticación al aire libre. Un exquisito sombrero trenzado a mano complementado con un delicado pañuelo de seda verde de estampado paisley. Perfecto para protegerte del sol con un nivel de elegancia propio de la brisa mediterránea.',
-    details: ['Palma natural fina trenzada a mano', 'Pañuelo de seda 100% intercambiable', 'Estructura rígida de ala media', 'Cinta de ajuste interior']
+    description: 'Sombrero de palma natural con pañuelo de seda.',
+    details: ['Material: Palma natural fina', 'Complemento: Pañuelo de seda 100%', 'Talla: Única (Ajustable)', 'Hecho a mano'],
+    isOneSize: true,
+    hasSizes: false
   },
   {
     id: 'm3',
@@ -48,9 +54,11 @@ export const PRODUCTS: Product[] = [
       '/images/products/blusa-lazo-corta-1.jpg',
       '/images/products/blusa-lazo-corta-2.jpg'
     ],
-    description: 'Ligereza hecha arte. Esta blusa corta en lino olán blanco puro atrapa la esencia del verano con un colibrí pintado a mano a Acriltex que parece suspendido en el tiempo. El escote fruncido con lazos al cuello le da ese toque bohemio y femenino que ninguna otra prenda puede replicar. Talla única — diseñada para fluir sobre cualquier figura.',
-    details: ['Técnica: Acriltex sobre Lino Olán', 'Color: Blanco', 'Talla única', 'Pintado a mano por Adriana Barrera'],
-    isNew: true
+    description: 'Blusa corta en lino olán con colibrí pintado a mano.',
+    details: ['Técnica: Acriltex sobre Lino Olán', 'Color: Blanco', 'Talla: Única', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: true,
+    hasSizes: true
   },
   {
     id: 'a3',
@@ -61,9 +69,11 @@ export const PRODUCTS: Product[] = [
     images: [
       '/images/products/pavito-migratorio.jpg'
     ],
-    description: 'Una encantadora obra de arte que captura la belleza del pavito migratorio. Pintado en óleo sobre lienzo con detalles delicados y colores vibrantes que le dan vida al espacio. Perfecto para aportar un toque de naturaleza y elegancia a cualquier rincón de tu hogar.',
-    details: ['Técnica: Óleo sobre lienzo', 'Dimensiones: 10 x 10 cm', 'Pieza original única', 'Pintado a mano por Adriana Barrera'],
-    isNew: true
+    description: 'Obra original en óleo sobre lienzo.',
+    details: ['Técnica: Óleo sobre lienzo', 'Dimensiones: 10 x 10 cm', 'Pieza original única', 'Artista: Adriana Barrera'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: false
   },
   {
     id: 'm5',
@@ -74,9 +84,11 @@ export const PRODUCTS: Product[] = [
     images: [
       '/images/products/2.jpeg'
     ],
-    description: 'Frescura absoluta con un toque etéreo. Este top blanco deslumbra por su caída suave y la preciosa ilustración de un colibrí esmeralda que parece descansar en el dobladillo, rematado con un exquisito ribete de croché azul pastel.',
-    details: ['Tejido fluido y liviano', 'Arte botánico y colibrí pintado a mano alzada', 'Detalle de encaje crochet artesanal', 'Diseño de escote fruncido'],
-    isNew: false
+    description: 'Top fluido con ilustración botánica y colibrí.',
+    details: ['Tejido: Fluido y liviano', 'Arte: Pintado a mano alzada', 'Detalle: Encaje crochet azul', 'Talla: Única'],
+    isNew: false,
+    isOneSize: true,
+    hasSizes: true
   },
   {
     id: 'm6',
@@ -88,9 +100,11 @@ export const PRODUCTS: Product[] = [
       '/images/products/canasto-iraca-1.jpg',
       '/images/products/canasto-iraca-2.jpg'
     ],
-    description: 'Una exquisita pieza artesanal tejida en palma de Iraca por Tuma Victalia, artesana indígena de la familia Yukuna. Cada canasto es customizado e intervenido por Adriana Barrera con flores coloridas, creando una obra única que combina la herencia ancestral con el arte contemporáneo.',
-    details: ['Tejido en palma de Iraca', 'Elaborado por Tuma Victalia (Comunidad Yukuna)', 'Customizado por Adriana Barrera', 'Pieza única'],
-    isNew: true
+    description: 'Canasto artesanal de Iraca intervenido con flores.',
+    details: ['Material: Palma de Iraca', 'Origen: Comunidad Yukuna', 'Intervención: Adriana Barrera', 'Pieza única'],
+    isNew: true,
+    isOneSize: true,
+    hasSizes: false
   },
   {
     id: 'a1',
@@ -101,9 +115,11 @@ export const PRODUCTS: Product[] = [
     images: [
       '/images/products/1.jpg'
     ],
-    description: 'Una pintura acrílica sobre lienzo que captura la esencia vibrante de la naturaleza americana. El juego cautivador de los tonos azules y verdes del colibrí sobre un sereno fondo esmeralda llenará de vida y calma cualquier espacio de tu hogar.',
-    details: ['Dimensiones: 30cm x 30cm', 'Acrílico profesional sobre lienzo tensado', 'Obra original firmada por Adriana Barrera', 'Listo para ser expuesto'],
-    isNew: true
+    description: 'Pintura acrílica sobre lienzo profesional.',
+    details: ['Dimensiones: 30cm x 30cm', 'Técnica: Acrílico sobre lienzo', 'Obra original firmada', 'Listo para colgar'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: false
   },
   {
     id: 'a2',
@@ -114,9 +130,11 @@ export const PRODUCTS: Product[] = [
     images: [
       '/images/products/8.jpeg'
     ],
-    description: 'Transmite paz y delicadeza. Esta obra original retrata una pequeña ave de impactante plumaje cobalto y ámbar, posada elegantemente sobre un cielo despejado. La textura del óleo y la precisión del pincel hacen de este cuadro un tesoro visual.',
-    details: ['Acrílico sobre lienzo texturizado', 'Dimensiones: 25cm x 25cm', 'Autenticidad garantizada', 'Bordes pintados continuos'],
-    isNew: false
+    description: 'Obra original en acrílico texturizado.',
+    details: ['Técnica: Acrílico texturizado', 'Dimensiones: 25cm x 25cm', 'Autenticidad garantizada', 'Artista: Adriana Barrera'],
+    isNew: false,
+    isOneSize: false,
+    hasSizes: false
   }
 ];
 

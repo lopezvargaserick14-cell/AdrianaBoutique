@@ -45,27 +45,13 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
               <Menu strokeWidth={1} />
             </button>
 
-            <Link to="/" className="flex items-center gap-3 transform origin-left">
-             <div className="relative w-7 h-7 md:w-8 md:h-8">
-               <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm">
-                 <defs>
-                   <linearGradient id="gold-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                     <stop offset="0%" stopColor="#d4af37" />
-                     <stop offset="50%" stopColor="#f3e5ab" />
-                     <stop offset="100%" stopColor="#aa7c11" />
-                   </linearGradient>
-                 </defs>
-                 <path d="M50 85 C50 85 20 60 20 40 A15 15 0 0 1 50 40 A15 15 0 0 1 80 40 C80 60 50 85 50 85 Z" fill="none" stroke="url(#gold-grad)" strokeWidth="4" className="opacity-90"/>
-                 <path d="M50 35 C35 15 10 30 25 55 C40 80 50 85 50 85 C50 85 60 80 75 55 C90 30 65 15 50 35 Z" fill="none" stroke="url(#gold-grad)" strokeWidth="2" strokeDasharray="3 3"/>
-               </svg>
-             </div>
-             <div className="flex flex-col items-start leading-[1.1]">
-               <span className="font-serif text-[13px] lg:text-[16px] tracking-[0.15em] bg-clip-text text-transparent bg-gradient-to-r from-[#aa7c11] via-[#d4af37] to-[#aa7c11] uppercase whitespace-nowrap">
-                 Adriana Barrera
-               </span>
-               <span className="text-[6px] lg:text-[7px] uppercase tracking-[0.4em] text-[#aa7c11] font-light mt-0.5">
-                 Shop
-               </span>
+            <Link to="/" className="flex items-center">
+             <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
+               <img 
+                 src="/logo.png" 
+                 alt="Adriana Barrera" 
+                 className="w-full h-full object-contain mix-blend-multiply"
+               />
              </div>
             </Link>
 

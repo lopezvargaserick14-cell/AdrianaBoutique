@@ -42,7 +42,7 @@ export default function HomePage() {
               Nueva Colección 2026
             </span>
             <h1 className="text-white font-serif text-6xl md:text-8xl lg:text-9xl mb-12 tracking-tight leading-none">
-              Pinceladas <br/> de <span className="italic">Lujo</span>
+              Arte aplicado <br/> a la <span className="italic">vida</span>
             </h1>
             <div className="flex flex-col md:flex-row gap-6 items-center">
               <Link
