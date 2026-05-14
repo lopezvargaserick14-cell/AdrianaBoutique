@@ -135,7 +135,53 @@ export const PRODUCTS: Product[] = [
     isNew: false,
     isOneSize: false,
     hasSizes: false
+  },
+  {
+    id: 'm7',
+    name: 'Blusón Brisa',
+    price: 250000,
+    formattedPrice: '$ 250.000',
+    category: 'mujer',
+    images: [
+      '/images/products/bluson-brisa.jpg'
+    ],
+    description: 'Blusón Verde en Lino Olán con Manga larga.',
+    details: ['Técnica: Acrílico sobre tela', 'Talla: XL', 'Pieza única', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true
+  },
+  {
+    id: 'm8',
+    name: 'Blusa Romantixa',
+    price: 250000,
+    formattedPrice: '$ 250.000',
+    category: 'mujer',
+    images: [
+      '/images/products/blusa-romantixa.jpg'
+    ],
+    description: 'Blusa en Lino Olán Color Blanco. Inspirada en los jardines y la danza de los colibríes.',
+    details: ['Mezcla de tejido y pintura', 'Diseño único', 'Talla: S', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true
+  },
+  {
+    id: 'm9',
+    name: 'Túnica Mariposa Endémica',
+    price: 250000,
+    formattedPrice: '$ 250.000',
+    category: 'mujer',
+    images: [
+      '/images/products/tunica-mariposa-1.jpg',
+      '/images/products/tunica-mariposa-2.jpg',
+      '/images/products/tunica-mariposa-3.jpg',
+      '/images/products/tunica-mariposa-4.jpg'
+    ],
+    description: 'Túnica corta en Lino Olán Color Blanco. Esta hermosa creación nace en la inspiración de color y movimiento que presenta la mariposa endémica de Santander.',
+    details: ['Tejido en hilo técnica croché en cuello, manga y borde', 'Técnica: Pintura en acrílico sobre tela, pincel', 'Talla: L', 'Pieza Única'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true
   }
 ];
-
-
