@@ -9,8 +9,8 @@ import { ArrowRight, Instagram } from 'lucide-react';
 export default function HomePage() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   
-  const newProducts = PRODUCTS.filter(p => p.isNew).slice(0, 4);
-  const highlightedProducts = PRODUCTS.slice(4, 8); // Just to show more variety
+  const newProducts = PRODUCTS.filter(p => p.isNew);
+  const highlightedProducts = PRODUCTS.filter(p => !p.isNew);
 
   return (
     <main className="bg-white overflow-hidden">
