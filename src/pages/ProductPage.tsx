@@ -97,14 +97,16 @@ export default function ProductPage() {
           
           <div className="flex flex-col gap-1 mb-12">
             <div className="flex items-center gap-4">
-              <span className="text-2xl md:text-3xl font-light text-gray-900">
-                {getPrices(product.price, product.formattedPrice).formattedCop}
+              <span className={`text-2xl md:text-3xl font-light ${product.isSold ? 'text-red-600 font-bold tracking-widest uppercase' : 'text-gray-900'}`}>
+                {product.isSold ? 'Vendida' : getPrices(product.price, product.formattedPrice).formattedCop}
               </span>
-              <div className="h-px flex-1 bg-gray-100"></div>
+              {!product.isSold && <div className="h-px flex-1 bg-gray-100"></div>}
             </div>
-            <span className="text-sm text-gray-400 font-light ml-1">
-              (Aprox. {getPrices(product.price, product.formattedPrice).formattedEur})
-            </span>
+            {!product.isSold && (
+              <span className="text-sm text-gray-400 font-light ml-1">
+                (Aprox. {getPrices(product.price, product.formattedPrice).formattedEur})
+              </span>
+            )}
           </div>
 
           <div className="space-y-8 mb-12">
@@ -122,95 +124,105 @@ export default function ProductPage() {
           </div>
 
           {/* Size Selector */}
-          <div className="mb-16 relative">
-            <div className="flex justify-between items-center mb-6">
-              <span className="uppercase tracking-[0.2em] text-[11px] font-bold text-black">
-                {product.hasSizes ? 'Seleccionar Talla' : 'Talla'}
-              </span>
-              {product.hasSizes && !product.isOneSize && (
-                <button 
-                  onClick={() => setIsSizeGuideOpen(true)}
-                  className="uppercase tracking-[0.2em] text-[10px] text-gray-500 underline decoration-gray-300 underline-offset-8 hover:text-black transition-colors"
-                >
-                  Ver Guía de Tallas
-                </button>
-              )}
-            </div>
-
-            <div className="grid grid-cols-4 gap-4 relative">
-              {product.hasSizes ? (
-                product.isOneSize ? (
+          {!product.isSold && (
+            <div className="mb-16 relative">
+              <div className="flex justify-between items-center mb-6">
+                <span className="uppercase tracking-[0.2em] text-[11px] font-bold text-black">
+                  {product.hasSizes ? 'Seleccionar Talla' : 'Talla'}
+                </span>
+                {product.hasSizes && !product.isOneSize && (
                   <button 
-                    translate="no"
-                    onClick={() => setSelectedSize('Única')}
-                    className="col-span-4 border py-4 text-sm tracking-widest border-black bg-black text-white transition-all duration-500"
+                    onClick={() => setIsSizeGuideOpen(true)}
+                    className="uppercase tracking-[0.2em] text-[10px] text-gray-500 underline decoration-gray-300 underline-offset-8 hover:text-black transition-colors"
                   >
-                    Talla Única
+                    Ver Guía de Tallas
                   </button>
-                ) : (
-                  sizes.map(size => (
+                )}
+              </div>
+
+              <div className="grid grid-cols-4 gap-4 relative">
+                {product.hasSizes ? (
+                  product.isOneSize ? (
                     <button 
-                      key={size}
                       translate="no"
-                      onClick={() => setSelectedSize(size)}
-                      className={`border py-4 text-sm tracking-widest transition-all duration-500 ${selectedSize === size ? 'border-black bg-black text-white' : 'border-gray-200 text-gray-400 hover:border-black hover:text-black'}`}
+                      onClick={() => setSelectedSize('Única')}
+                      className="col-span-4 border py-4 text-sm tracking-widest border-black bg-black text-white transition-all duration-500"
                     >
-                      {size}
+                      Talla Única
                     </button>
-                  ))
-                )
-              ) : (
-                <>
-                  {/* Crossed out effect for Arte/No Sizes */}
-                  <div className="col-span-4 border border-gray-100 py-4 text-sm tracking-widest text-gray-300 relative overflow-hidden flex items-center justify-center">
-                    No aplica
-                    <div className="absolute top-1/2 left-0 w-full h-[2px] bg-red-500/40 -rotate-6"></div>
-                  </div>
-                </>
+                  ) : (
+                    sizes.map(size => (
+                      <button 
+                        key={size}
+                        translate="no"
+                        onClick={() => setSelectedSize(size)}
+                        className={`border py-4 text-sm tracking-widest transition-all duration-500 ${selectedSize === size ? 'border-black bg-black text-white' : 'border-gray-200 text-gray-400 hover:border-black hover:text-black'}`}
+                      >
+                        {size}
+                      </button>
+                    ))
+                  )
+                ) : (
+                  <>
+                    {/* Crossed out effect for Arte/No Sizes */}
+                    <div className="col-span-4 border border-gray-100 py-4 text-sm tracking-widest text-gray-300 relative overflow-hidden flex items-center justify-center">
+                      No aplica
+                      <div className="absolute top-1/2 left-0 w-full h-[2px] bg-red-500/40 -rotate-6"></div>
+                    </div>
+                  </>
+                )}
+              </div>
+              
+              {!product.hasSizes && (
+                 <div className="mt-4 text-[10px] text-red-500/60 uppercase tracking-widest font-medium">
+                   * Esta pieza no requiere selección de talla
+                 </div>
               )}
             </div>
-            
-            {!product.hasSizes && (
-               <div className="mt-4 text-[10px] text-red-500/60 uppercase tracking-widest font-medium">
-                 * Esta pieza no requiere selección de talla
-               </div>
-            )}
-          </div>
+          )}
 
           {/* Add to Cart Actions */}
           <div className="space-y-4 mb-16">
-            <button 
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                if (!selectedSize) {
-                  alert("Por favor, selecciona una talla antes de añadir a la bolsa.");
-                  return;
-                }
-                console.log("Acción: Añadir al carrito");
-                addToCart(product, selectedSize);
-              }}
-              className="w-full bg-black text-white hover:bg-gray-800 py-6 uppercase tracking-[0.3em] text-[11px] font-bold transition-all duration-500 shadow-xl active:scale-[0.98] cursor-pointer"
-            >
-              Añadir a la Bolsa
-            </button>
-            
-            <button 
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                if (!selectedSize) {
-                  alert("Por favor, selecciona una talla antes de comprar.");
-                  return;
-                }
-                console.log("Acción: Comprar ahora");
-                addToCart(product, selectedSize, true);
-                setTimeout(() => navigate('/checkout'), 100);
-              }}
-              className="w-full border-2 border-black text-black hover:bg-black hover:text-white py-6 uppercase tracking-[0.3em] text-[11px] font-bold transition-all duration-500 active:scale-[0.98] cursor-pointer"
-            >
-              Comprar Ahora
-            </button>
+            {product.isSold ? (
+              <div className="w-full bg-gray-100 text-gray-400 py-6 uppercase tracking-[0.3em] text-[11px] font-bold text-center border border-gray-200">
+                Pieza Vendida
+              </div>
+            ) : (
+              <>
+                <button 
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (!selectedSize) {
+                      alert("Por favor, selecciona una talla antes de añadir a la bolsa.");
+                      return;
+                    }
+                    console.log("Acción: Añadir al carrito");
+                    addToCart(product, selectedSize);
+                  }}
+                  className="w-full bg-black text-white hover:bg-gray-800 py-6 uppercase tracking-[0.3em] text-[11px] font-bold transition-all duration-500 shadow-xl active:scale-[0.98] cursor-pointer"
+                >
+                  Añadir a la Bolsa
+                </button>
+                
+                <button 
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (!selectedSize) {
+                      alert("Por favor, selecciona una talla antes de comprar.");
+                      return;
+                    }
+                    console.log("Acción: Comprar ahora");
+                    addToCart(product, selectedSize, true);
+                    setTimeout(() => navigate('/checkout'), 100);
+                  }}
+                  className="w-full border-2 border-black text-black hover:bg-black hover:text-white py-6 uppercase tracking-[0.3em] text-[11px] font-bold transition-all duration-500 active:scale-[0.98] cursor-pointer"
+                >
+                  Comprar Ahora
+                </button>
+              </>
+            )}
           </div>
 
           {/* Details Accordeon (Simplified) */}

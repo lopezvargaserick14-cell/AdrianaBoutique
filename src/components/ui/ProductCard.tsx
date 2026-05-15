@@ -27,19 +27,29 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
         </Link>
         
         {/* Quick View Button */}
-        <button 
-          onClick={(e) => {
-            e.preventDefault();
-            onQuickView(product);
-          }}
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm text-black px-6 py-3 uppercase tracking-[0.2em] text-[9px] opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-black hover:text-white flex items-center gap-2 border border-transparent hover:border-white/20"
-        >
-          <Eye size={14} />
-          Vista Rápida
-        </button>
+        {!product.isSold && (
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              onQuickView(product);
+            }}
+            className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-sm text-black px-6 py-3 uppercase tracking-[0.2em] text-[9px] opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-black hover:text-white flex items-center gap-2 border border-transparent hover:border-white/20"
+          >
+            <Eye size={14} />
+            Vista Rápida
+          </button>
+        )}
 
-        {product.isNew && (
-          <span className="absolute top-6 left-6 bg-black text-white px-3 py-1 uppercase tracking-widest text-[8px] font-medium">
+        {product.isSold && (
+          <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] flex items-center justify-center z-10 pointer-events-none">
+            <span className="bg-black text-white px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-bold shadow-xl">
+              Vendida
+            </span>
+          </div>
+        )}
+
+        {product.isNew && !product.isSold && (
+          <span className="absolute top-6 left-6 bg-black text-white px-3 py-1 uppercase tracking-widest text-[8px] font-medium z-10">
             Nuevo
           </span>
         )}

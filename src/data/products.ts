@@ -10,6 +10,7 @@ export interface Product {
   isNew?: boolean;
   isOneSize?: boolean;
   hasSizes?: boolean;
+  isSold?: boolean;
 }
 
 export const PRODUCTS: Product[] = [
@@ -47,8 +48,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'm3',
     name: 'Blusa Lazo Corta',
-    price: 250000,
-    formattedPrice: '$ 250.000',
+    price: 150000,
+    formattedPrice: '$ 150.000',
     category: 'mujer',
     images: [
       '/images/products/blusa-lazo-corta-1.jpg',
@@ -108,9 +109,9 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'a1',
-    name: 'Obra Original "Luz de Colibrí"',
-    price: 450,
-    formattedPrice: '€ 450',
+    name: 'Cuadro de Colibrí',
+    price: 120000,
+    formattedPrice: '$ 120.000',
     category: 'arte',
     images: [
       '/images/products/1.jpg'
@@ -138,9 +139,9 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'm7',
-    name: 'Blusón Brisa',
-    price: 250000,
-    formattedPrice: '$ 250.000',
+    name: 'Blusón Brisa Verde Pistacho',
+    price: 150000,
+    formattedPrice: '$ 150.000',
     category: 'mujer',
     images: [
       '/images/products/bluson-brisa.jpg'
@@ -154,8 +155,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'm8',
     name: 'Blusa Romantixa',
-    price: 250000,
-    formattedPrice: '$ 250.000',
+    price: 150000,
+    formattedPrice: '$ 150.000',
     category: 'mujer',
     images: [
       '/images/products/blusa-romantixa.jpg'
@@ -182,6 +183,7 @@ export const PRODUCTS: Product[] = [
     details: ['Tejido en hilo técnica croché en cuello, manga y borde', 'Técnica: Pintura en acrílico sobre tela, pincel', 'Talla: L', 'Pieza Única'],
     isNew: true,
     isOneSize: false,
-    hasSizes: true
+    hasSizes: true,
+    isSold: true
   }
 ];

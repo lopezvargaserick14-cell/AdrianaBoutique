@@ -45,14 +45,24 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
               <Menu strokeWidth={1} />
             </button>
 
-            <Link to="/" className="flex items-center">
-             <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center">
-               <img 
-                 src="/logo.png" 
-                 alt="Adriana Barrera" 
-                 className="w-full h-full object-contain mix-blend-multiply"
-               />
-             </div>
+            <Link to="/" className="flex flex-col items-center">
+              <div className="relative w-10 h-10 md:w-14 md:h-14 flex items-center justify-center">
+                <img 
+                  src="/logo.png" 
+                  alt="Adriana Barrera" 
+                  className="w-full h-full object-contain mix-blend-multiply"
+                />
+              </div>
+              <div className="flex flex-col items-center -mt-1">
+                <span className="font-serif text-[8px] md:text-[10px] tracking-[0.2em] text-brand-gold uppercase leading-tight">
+                  Adriana Barrera
+                </span>
+                <div className="flex items-center gap-1.5 text-[5px] md:text-[6px] tracking-[0.3em] text-brand-gold uppercase leading-none opacity-80">
+                  <span className="w-4 h-[0.5px] bg-[#d4af37] opacity-50"></span>
+                  <span>Shop</span>
+                  <span className="w-4 h-[0.5px] bg-[#d4af37] opacity-50"></span>
+                </div>
+              </div>
             </Link>
 
             <div className="hidden xl:flex gap-4 lg:gap-6 text-[9px] lg:text-[10px] uppercase tracking-[0.15em] font-light transition-colors duration-500">
@@ -90,7 +100,15 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
       {isMenuOpen && (
         <div className="fixed inset-0 bg-white z-50 flex flex-col p-6 animate-in slide-in-from-left duration-300">
           <div className="flex justify-between items-center mb-12">
-            <span className="font-serif text-xl tracking-wide uppercase">Adriana Barrera</span>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 flex items-center justify-center">
+                <img src="/logo.png" alt="Logo" className="w-full h-full object-contain mix-blend-multiply" />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-serif text-sm tracking-[0.15em] uppercase leading-tight text-brand-gold">Adriana Barrera</span>
+                <span className="text-[7px] tracking-[0.3em] uppercase text-brand-gold opacity-80">Shop</span>
+              </div>
+            </div>
             <button onClick={() => setIsMenuOpen(false)}>
               <X strokeWidth={1} className="w-6 h-6" />
             </button>

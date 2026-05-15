@@ -76,11 +76,11 @@ export default function HomePage() {
           transition={{ duration: 1 }}
         >
           <h2 className="font-serif text-3xl md:text-5xl text-black mb-12 leading-[1.2]">
-            Cada pieza es un lienzo, <br/> cada trazo es una historia.
+            Entre la fauna y la flora colombiana
           </h2>
           <div className="w-12 h-[1px] bg-black mx-auto mb-12"></div>
           <p className="text-gray-500 font-light leading-loose text-base md:text-lg max-w-2xl mx-auto">
-            En la boutique de Adriana Barrera, la moda trasciende lo convencional. Fusionamos la alta costura con el arte pictórico, creando prendas únicas pintadas a mano alzada para quienes buscan exclusividad y distinción.
+            Adriana Barrera es una artista y diseñadora que ha creado del arte un estilo de vida, personalizando, haciendo de cada pieza elaborada una obra divina con la que puedes conectar en diferente escenarios de tu vida, y la naturaleza es su fuente de inspiracion!
           </p>
         </motion.div>
       </section>

@@ -57,8 +57,8 @@ export default function ProductQuickView({ product, onClose }: ProductQuickViewP
               <h2 className="font-serif text-3xl md:text-4xl text-black mb-6 leading-tight">
                 {product.name}
               </h2>
-              <p className="text-xl font-light text-gray-900 mb-8">
-                {product.formattedPrice}
+              <p className={`text-xl font-light mb-8 ${product.isSold ? 'text-red-600 font-bold uppercase tracking-widest' : 'text-gray-900'}`}>
+                {product.isSold ? 'Vendida' : product.formattedPrice}
               </p>
               
               <div className="space-y-6 mb-10">
@@ -81,24 +81,32 @@ export default function ProductQuickView({ product, onClose }: ProductQuickViewP
             </div>
 
             <div className="flex flex-col gap-4 mt-8">
-              <button 
-                onClick={() => {
-                  const size = product.isOneSize ? 'Única' : product.hasSizes ? null : 'N/A';
-                  if (product.hasSizes && !product.isOneSize) {
-                    // Redirect to full page if multiple sizes needed
-                    onClose();
-                    window.location.href = `/producto/${product.id}`;
-                  } else {
-                    // Import useCart if needed or just redirect
-                    onClose();
-                    window.location.href = `/producto/${product.id}`;
-                  }
-                }}
-                className="w-full bg-black text-white py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-gray-800 transition-colors flex items-center justify-center gap-3 group"
-              >
-                <ShoppingBag size={14} className="group-hover:-translate-y-0.5 transition-transform" />
-                {product.hasSizes && !product.isOneSize ? 'Seleccionar Talla' : 'Añadir al carrito'}
-              </button>
+              {product.isSold ? (
+                <div className="w-full bg-gray-100 text-gray-400 py-5 uppercase tracking-[0.2em] text-[10px] text-center border border-gray-200">
+                  Pieza Vendida
+                </div>
+              ) : (
+                <>
+                  <button 
+                    onClick={() => {
+                      const size = product.isOneSize ? 'Única' : product.hasSizes ? null : 'N/A';
+                      if (product.hasSizes && !product.isOneSize) {
+                        // Redirect to full page if multiple sizes needed
+                        onClose();
+                        window.location.href = `/producto/${product.id}`;
+                      } else {
+                        // Import useCart if needed or just redirect
+                        onClose();
+                        window.location.href = `/producto/${product.id}`;
+                      }
+                    }}
+                    className="w-full bg-black text-white py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-gray-800 transition-colors flex items-center justify-center gap-3 group"
+                  >
+                    <ShoppingBag size={14} className="group-hover:-translate-y-0.5 transition-transform" />
+                    {product.hasSizes && !product.isOneSize ? 'Seleccionar Talla' : 'Añadir al carrito'}
+                  </button>
+                </>
+              )}
               <Link 
                 to={`/producto/${product.id}`}
                 onClick={onClose}
