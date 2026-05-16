@@ -19,10 +19,11 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0 p-4 md:p-8 pt-[90px] md:pt-[110px]">
           <div className="w-full h-full overflow-hidden relative group">
              <iframe 
-               src="https://www.youtube.com/embed/Ld-T0iN30VU?autoplay=1&mute=1&loop=1&playlist=Ld-T0iN30VU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+               src="https://www.youtube.com/embed/Ld-T0iN30VU?autoplay=1&mute=1&loop=1&playlist=Ld-T0iN30VU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=0&disablekb=1"
                title="Background Video"
                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-               className="absolute w-[300vw] h-[300vh] md:w-[150vw] md:h-[250vh] max-w-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 filter brightness-[0.85] contrast-[1.1] saturate-[1.15] scale-105 group-hover:scale-100 transition-transform duration-[5s] ease-out pointer-events-none"
+               style={{ width: '250vw', height: '444vw' }}
+               className="absolute max-w-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 filter brightness-[0.85] contrast-[1.1] saturate-[1.15] pointer-events-none"
              />
 
              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
