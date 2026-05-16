@@ -18,12 +18,10 @@ export default function HomePage() {
       <section className="relative h-[90vh] md:h-screen w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0 p-4 md:p-8 pt-[90px] md:pt-[110px]">
           <div className="w-full h-full overflow-hidden relative group">
-             <iframe 
-               src="https://www.youtube.com/embed/Ld-T0iN30VU?autoplay=1&mute=1&loop=1&playlist=Ld-T0iN30VU&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&fs=0&disablekb=1"
-               title="Background Video"
-               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-               style={{ width: '250vw', height: '444vw' }}
-               className="absolute max-w-none top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 filter brightness-[0.85] contrast-[1.1] saturate-[1.15] pointer-events-none"
+             <img 
+               src="/prin.jpeg"
+               alt="Hero Background"
+               className="w-full h-full object-contain md:object-cover object-center absolute inset-0 filter brightness-[0.85] contrast-[1.1] saturate-[1.15]"
              />
 
              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
