@@ -44,7 +44,7 @@ export default function HomePage() {
             <h1 className="text-white font-serif text-6xl md:text-8xl lg:text-9xl mb-12 tracking-tight leading-none">
               Arte aplicado <br/> a la <span className="italic">vida</span>
             </h1>
-            <div className="flex flex-col md:flex-row gap-6 items-center">
+            <div className="flex flex-col md:flex-row gap-6 items-center justify-center w-full">
               <Link
                 to="/categoria/mujer"
                 className="bg-white text-black px-12 py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-black hover:text-white transition-all duration-700 min-w-[220px]"

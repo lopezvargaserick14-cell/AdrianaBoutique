@@ -35,7 +35,7 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
   return (
     <>
       <div className="bg-black text-white text-[10px] py-2.5 text-center tracking-[0.2em] uppercase font-light relative z-[60]">
-        Envíos gratuitos a todo el mundo en pedidos superiores a €300
+        Envíos gratis a Colombia por compras superiores a $300.000 COP
       </div>
 
       <nav className={`fixed w-full z-50 transition-all duration-700 border-b border-transparent ${getNavClass()} ${isScrolled ? 'top-0' : 'top-[36px]'}`}>
