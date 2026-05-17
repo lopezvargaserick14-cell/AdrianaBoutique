@@ -28,9 +28,11 @@ export default function CategoryPage() {
       <div className="flex flex-col items-center text-center mb-16 md:mb-24">
         <h1 className="font-serif text-4xl md:text-5xl text-black mb-6">{title}</h1>
         <div className="w-px h-12 bg-black/20 mb-8"></div>
-        <p className="font-light text-gray-500 text-sm max-w-xl mx-auto">
-          Descubra nuestra selección de piezas exclusivas. Pintadas a mano, cada obra es una historia por contar.
-        </p>
+        {gender?.toLowerCase() !== 'hombre' && (
+          <p className="font-light text-gray-500 text-sm max-w-xl mx-auto">
+            Descubra nuestra selección de piezas exclusivas. Pintadas a mano, cada pieza es inspirada en la flora y fauna de nuestro pais
+          </p>
+        )}
       </div>
 
       {categoryProducts.length > 0 ? (
@@ -55,7 +57,15 @@ export default function CategoryPage() {
         </div>
       ) : (
         <div className="text-center py-20">
-          <p className="text-gray-500 font-light">No hay productos en esta categoría por el momento.</p>
+          {gender?.toLowerCase() === 'hombre' ? (
+            <p className="text-gray-900 text-3xl font-serif">
+              Muy pronto...
+            </p>
+          ) : (
+            <p className="text-gray-500 font-light">
+              No hay productos en esta categoría por el momento.
+            </p>
+          )}
         </div>
       )}
     </div>

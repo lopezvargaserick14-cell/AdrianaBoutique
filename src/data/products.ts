@@ -10,6 +10,7 @@ export interface Product {
   isNew?: boolean;
   isOneSize?: boolean;
   hasSizes?: boolean;
+  availableSizes?: string[];
   isSold?: boolean;
 }
 
@@ -43,7 +44,8 @@ export const PRODUCTS: Product[] = [
     description: 'Sombrero de palma natural con pañuelo de seda.',
     details: ['Material: Palma natural fina', 'Complemento: Pañuelo de seda 100%', 'Talla: Única (Ajustable)', 'Hecho a mano'],
     isOneSize: true,
-    hasSizes: false
+    hasSizes: false,
+    isSold: true
   },
   {
     id: 'm3',
@@ -75,21 +77,6 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isOneSize: false,
     hasSizes: false
-  },
-  {
-    id: 'm5',
-    name: 'Top Ligero "Brisa de Zafiro"',
-    price: 210,
-    formattedPrice: '€ 210',
-    category: 'mujer',
-    images: [
-      '/images/products/2.jpeg'
-    ],
-    description: 'Top fluido con ilustración botánica y colibrí.',
-    details: ['Tejido: Fluido y liviano', 'Arte: Pintado a mano alzada', 'Detalle: Encaje crochet azul', 'Talla: Única'],
-    isNew: false,
-    isOneSize: true,
-    hasSizes: true
   },
   {
     id: 'm6',
@@ -150,22 +137,24 @@ export const PRODUCTS: Product[] = [
     details: ['Técnica: Acrílico sobre tela', 'Talla: XL', 'Pieza única', 'Pintado a mano por Adriana Barrera'],
     isNew: true,
     isOneSize: false,
-    hasSizes: true
+    hasSizes: true,
+    availableSizes: ['XL']
   },
   {
     id: 'm8',
-    name: 'Blusa Romantixa',
+    name: 'Blusón romántica',
     price: 150000,
     formattedPrice: '$ 150.000',
     category: 'mujer',
     images: [
       '/images/products/blusa-romantixa.jpg'
     ],
-    description: 'Blusa en Lino Olán Color Blanco. Inspirada en los jardines y la danza de los colibríes.',
+    description: 'Blusón en Lino Olán Color Blanco. Inspirada en los jardines y la danza de los colibríes.',
     details: ['Mezcla de tejido y pintura', 'Diseño único', 'Talla: S', 'Pintado a mano por Adriana Barrera'],
     isNew: true,
     isOneSize: false,
-    hasSizes: true
+    hasSizes: true,
+    availableSizes: ['S']
   },
   {
     id: 'm9',

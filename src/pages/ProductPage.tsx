@@ -151,7 +151,7 @@ export default function ProductPage() {
                       Talla Única
                     </button>
                   ) : (
-                    sizes.map(size => (
+                    (product.availableSizes || sizes).map(size => (
                       <button 
                         key={size}
                         translate="no"
