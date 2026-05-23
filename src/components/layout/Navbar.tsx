@@ -65,15 +65,67 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
               </div>
             </Link>
 
-            <div className="hidden xl:flex gap-4 lg:gap-6 text-[9px] lg:text-[10px] uppercase tracking-[0.15em] font-light transition-colors duration-500">
-              <Link to="/categoria/novedades" className="hover:opacity-50 transition-opacity whitespace-nowrap">Novedades</Link>
-              <Link to="/categoria/best-sellers" className="hover:opacity-50 transition-opacity whitespace-nowrap">Best Sellers</Link>
-              <Link to="/categoria/mujer" className="hover:opacity-50 transition-opacity whitespace-nowrap">Mujer</Link>
-              <Link to="/categoria/hombre" className="hover:opacity-50 transition-opacity whitespace-nowrap">Hombre</Link>
-              <Link to="/categoria/bolsos-canastos" className="hover:opacity-50 transition-opacity whitespace-nowrap">Canastos & Bolsos</Link>
-              <Link to="/categoria/bufandas" className="hover:opacity-50 transition-opacity whitespace-nowrap">Bufandas</Link>
-              <Link to="/categoria/arte" className="hover:opacity-50 transition-opacity whitespace-nowrap">Arte</Link>
-              <Link to="/categoria/gift-guide" className="hover:opacity-50 transition-opacity whitespace-nowrap text-[#8B6914]">Gift Guide</Link>
+            <div className="hidden xl:flex gap-6 lg:gap-8 text-[9px] lg:text-[10px] uppercase tracking-[0.15em] font-light transition-colors duration-500">
+              
+              {/* Mujer Dropdown */}
+              <div className="group relative py-4 -my-4">
+                <Link to="/categoria/mujer" className="hover:opacity-50 transition-opacity whitespace-nowrap">Mujer</Link>
+                {/* Level 1 Dropdown */}
+                <div className="absolute top-full left-0 hidden group-hover:block bg-white text-black shadow-lg border border-gray-100 py-4 min-w-[200px] z-50">
+                  
+                  {/* Prendas de vestir */}
+                  <div className="group/prendas relative px-6 py-3 hover:bg-gray-50">
+                    <Link to="/categoria/prendas-de-vestir" className="flex justify-between items-center w-full">
+                      Prendas de vestir <span className="text-gray-400">›</span>
+                    </Link>
+                    {/* Level 2 Dropdown */}
+                    <div className="absolute top-0 left-full hidden group-hover/prendas:block bg-white shadow-lg border border-gray-100 py-4 min-w-[180px] z-50">
+                      <Link to="/categoria/pantalones" className="block px-6 py-2 hover:bg-gray-50">Pantalones</Link>
+                      <Link to="/categoria/blusas" className="block px-6 py-2 hover:bg-gray-50">Blusas</Link>
+                      <Link to="/categoria/vestidos" className="block px-6 py-2 hover:bg-gray-50">Vestidos</Link>
+                      <Link to="/categoria/camisas" className="block px-6 py-2 hover:bg-gray-50">Camisas</Link>
+                      <Link to="/categoria/camisetas" className="block px-6 py-2 hover:bg-gray-50">Camisetas</Link>
+                      <Link to="/categoria/faldas" className="block px-6 py-2 hover:bg-gray-50">Faldas</Link>
+                      <Link to="/categoria/accesorios" className="block px-6 py-2 hover:bg-gray-50">Accesorios</Link>
+                    </div>
+                  </div>
+
+                  {/* Hogar */}
+                  <div className="group/hogar relative px-6 py-3 hover:bg-gray-50">
+                    <Link to="/categoria/hogar" className="flex justify-between items-center w-full">
+                      Hogar <span className="text-gray-400">›</span>
+                    </Link>
+                    {/* Level 2 Dropdown */}
+                    <div className="absolute top-0 left-full hidden group-hover/hogar:block bg-white shadow-lg border border-gray-100 py-4 min-w-[180px] z-50">
+                      <Link to="/categoria/canastos" className="block px-6 py-2 hover:bg-gray-50">Canastos</Link>
+                      <Link to="/categoria/manteles" className="block px-6 py-2 hover:bg-gray-50">Manteles</Link>
+                      <Link to="/categoria/juego-de-sabanas" className="block px-6 py-2 hover:bg-gray-50">Juego de sábanas</Link>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Galería de Arte Dropdown */}
+              <div className="group relative py-4 -my-4">
+                <Link to="/categoria/galeria-de-arte" className="hover:opacity-50 transition-opacity whitespace-nowrap">Galería de Arte</Link>
+                {/* Level 1 Dropdown */}
+                <div className="absolute top-full left-0 hidden group-hover:block bg-white text-black shadow-lg border border-gray-100 py-4 min-w-[200px] z-50">
+                  {/* Cuadros */}
+                  <div className="group/cuadros relative px-6 py-3 hover:bg-gray-50">
+                    <Link to="/categoria/cuadros" className="flex justify-between items-center w-full">
+                      Cuadros <span className="text-gray-400">›</span>
+                    </Link>
+                    {/* Level 2 Dropdown */}
+                    <div className="absolute top-0 left-full hidden group-hover/cuadros:block bg-white shadow-lg border border-gray-100 py-4 min-w-[180px] z-50">
+                      <Link to="/categoria/oleo" className="block px-6 py-2 hover:bg-gray-50">Óleo</Link>
+                      <Link to="/categoria/acrilico" className="block px-6 py-2 hover:bg-gray-50">Acrílico</Link>
+                      <Link to="/categoria/acuarela" className="block px-6 py-2 hover:bg-gray-50">Acuarela</Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
 
@@ -113,15 +165,53 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
               <X strokeWidth={1} className="w-6 h-6" />
             </button>
           </div>
-          <div className="flex flex-col gap-8 text-lg font-light uppercase tracking-[0.1em]">
-             <Link to="/categoria/novedades" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Novedades</Link>
-             <Link to="/categoria/best-sellers" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Best Sellers</Link>
-             <Link to="/categoria/mujer" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Mujer</Link>
-             <Link to="/categoria/hombre" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Hombre</Link>
-             <Link to="/categoria/bolsos-canastos" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Canastos & Bolsos</Link>
-             <Link to="/categoria/bufandas" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Bufandas</Link>
-             <Link to="/categoria/arte" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500">Arte</Link>
-             <Link to="/categoria/gift-guide" onClick={() => setIsMenuOpen(false)} className="hover:text-[#8B6914] text-[#8B6914]">Gift Guide</Link>
+          <div className="flex flex-col gap-6 text-lg font-light uppercase tracking-[0.1em] overflow-y-auto pb-20">
+             
+             {/* Mujer Section */}
+             <div className="flex flex-col gap-4">
+               <Link to="/categoria/mujer" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500 font-normal">Mujer</Link>
+               <div className="flex flex-col gap-4 pl-4 text-base border-l border-gray-100">
+                 
+                 <div className="flex flex-col gap-3">
+                   <Link to="/categoria/prendas-de-vestir" onClick={() => setIsMenuOpen(false)} className="text-gray-600">Prendas de vestir</Link>
+                   <div className="flex flex-col gap-3 pl-4 text-sm text-gray-400">
+                     <Link to="/categoria/pantalones" onClick={() => setIsMenuOpen(false)}>Pantalones</Link>
+                     <Link to="/categoria/blusas" onClick={() => setIsMenuOpen(false)}>Blusas</Link>
+                     <Link to="/categoria/vestidos" onClick={() => setIsMenuOpen(false)}>Vestidos</Link>
+                     <Link to="/categoria/camisas" onClick={() => setIsMenuOpen(false)}>Camisas</Link>
+                     <Link to="/categoria/camisetas" onClick={() => setIsMenuOpen(false)}>Camisetas</Link>
+                     <Link to="/categoria/faldas" onClick={() => setIsMenuOpen(false)}>Faldas</Link>
+                     <Link to="/categoria/accesorios" onClick={() => setIsMenuOpen(false)}>Accesorios</Link>
+                   </div>
+                 </div>
+
+                 <div className="flex flex-col gap-3 mt-2">
+                   <Link to="/categoria/hogar" onClick={() => setIsMenuOpen(false)} className="text-gray-600">Hogar</Link>
+                   <div className="flex flex-col gap-3 pl-4 text-sm text-gray-400">
+                     <Link to="/categoria/canastos" onClick={() => setIsMenuOpen(false)}>Canastos</Link>
+                     <Link to="/categoria/manteles" onClick={() => setIsMenuOpen(false)}>Manteles</Link>
+                     <Link to="/categoria/juego-de-sabanas" onClick={() => setIsMenuOpen(false)}>Juego de sábanas</Link>
+                   </div>
+                 </div>
+
+               </div>
+             </div>
+
+             {/* Galeria de Arte Section */}
+             <div className="flex flex-col gap-4 mt-2">
+               <Link to="/categoria/galeria-de-arte" onClick={() => setIsMenuOpen(false)} className="hover:text-gray-500 font-normal">Galería de Arte</Link>
+               <div className="flex flex-col gap-3 pl-4 text-base border-l border-gray-100">
+                 <div className="flex flex-col gap-3">
+                   <Link to="/categoria/cuadros" onClick={() => setIsMenuOpen(false)} className="text-gray-600">Cuadros</Link>
+                   <div className="flex flex-col gap-3 pl-4 text-sm text-gray-400">
+                     <Link to="/categoria/oleo" onClick={() => setIsMenuOpen(false)}>Óleo</Link>
+                     <Link to="/categoria/acrilico" onClick={() => setIsMenuOpen(false)}>Acrílico</Link>
+                     <Link to="/categoria/acuarela" onClick={() => setIsMenuOpen(false)}>Acuarela</Link>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
              <div className="w-full h-px bg-gray-100 my-4"></div>
              <button onClick={() => { setIsMenuOpen(false); onOpenProfile(); }} className="text-left hover:text-gray-500">Mi Perfil</button>
           </div>
