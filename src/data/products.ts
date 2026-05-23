@@ -159,5 +159,22 @@ export const PRODUCTS: Product[] = [
     isOneSize: false,
     hasSizes: true,
     isSold: true
+  },
+  {
+    id: 'm10',
+    name: 'Encuentro',
+    price: 180000,
+    formattedPrice: '$ 180.000',
+    category: 'mujer',
+    images: [
+      '/images/products/encuentro-1.jpg',
+      '/images/products/encuentro-2.jpg'
+    ],
+    description: 'Túnica corta con tejido en cuello manga y borde inferior. Inspirado en el cortejo de una pareja de colibríes macho y hembra en perfecta sincronía. Con forro en chalis.',
+    details: ['Material: Lino Olán', 'Talla: M', 'Forro en chalis'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true,
+    availableSizes: ['M']
   }
 ];
