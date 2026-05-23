@@ -33,21 +33,6 @@ export const PRODUCTS: Product[] = [
     hasSizes: true
   },
   {
-    id: 'm2',
-    name: 'Sombrero Panamá "Riviera"',
-    price: 185,
-    formattedPrice: '€ 185',
-    category: 'mujer',
-    images: [
-      '/images/products/6.jpeg'
-    ],
-    description: 'Sombrero de palma natural con pañuelo de seda.',
-    details: ['Material: Palma natural fina', 'Complemento: Pañuelo de seda 100%', 'Talla: Única (Ajustable)', 'Hecho a mano'],
-    isOneSize: true,
-    hasSizes: false,
-    isSold: true
-  },
-  {
     id: 'm3',
     name: 'Blusa Lazo Corta',
     price: 150000,
