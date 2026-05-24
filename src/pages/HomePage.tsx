@@ -49,6 +49,12 @@ export default function HomePage() {
                 Colección Mujer
               </Link>
               <Link
+                to="/categoria/hogar"
+                className="bg-white text-black px-12 py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-black hover:text-white transition-all duration-700 min-w-[220px]"
+              >
+                Hogar
+              </Link>
+              <Link
                 to="/categoria/arte"
                 className="backdrop-blur-md bg-white/10 text-white border border-white/30 px-12 py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-white hover:text-black transition-all duration-700 min-w-[220px]"
               >
