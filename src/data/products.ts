@@ -105,8 +105,7 @@ export const PRODUCTS: Product[] = [
     name: 'Obra Original "Vuelo en Azul"',
     price: 380,
     formattedPrice: '€ 380',
-    category: 'arte',
-    subcategory: 'acrilico',
+    category: 'mujer',
     images: [
       '/images/products/8.jpeg'
     ],
