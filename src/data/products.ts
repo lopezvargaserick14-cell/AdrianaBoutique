@@ -3,7 +3,8 @@ export interface Product {
   name: string;
   price: number;
   formattedPrice: string;
-  category: 'mujer' | 'hombre' | 'arte';
+  category: 'mujer' | 'hombre' | 'arte' | 'hogar';
+  subcategory?: 'pantalones' | 'blusas' | 'vestidos' | 'faldas' | 'camisas' | 'canastos' | 'manteles' | 'oleo' | 'acuarela' | 'acrilico';
   images: string[];
   description: string;
   details: string[];
@@ -21,6 +22,7 @@ export const PRODUCTS: Product[] = [
     price: 250000,
     formattedPrice: '$ 250.000',
     category: 'mujer',
+    subcategory: 'vestidos',
     images: [
       '/images/products/vestido-guacamayas-3.jpg',
       '/images/products/vestido-guacamayas-1.jpg',
@@ -38,6 +40,7 @@ export const PRODUCTS: Product[] = [
     price: 150000,
     formattedPrice: '$ 150.000',
     category: 'mujer',
+    subcategory: 'blusas',
     images: [
       '/images/products/blusa-lazo-corta-1.jpg',
       '/images/products/blusa-lazo-corta-2.jpg'
@@ -54,6 +57,7 @@ export const PRODUCTS: Product[] = [
     price: 120000,
     formattedPrice: '$ 120.000',
     category: 'arte',
+    subcategory: 'oleo',
     images: [
       '/images/products/pavito-migratorio.jpg'
     ],
@@ -68,7 +72,8 @@ export const PRODUCTS: Product[] = [
     name: 'Canasto en Iraca',
     price: 60000,
     formattedPrice: '$ 60.000',
-    category: 'mujer',
+    category: 'hogar',
+    subcategory: 'canastos',
     images: [
       '/images/products/canasto-iraca-1.jpg',
       '/images/products/canasto-iraca-2.jpg'
@@ -85,6 +90,7 @@ export const PRODUCTS: Product[] = [
     price: 120000,
     formattedPrice: '$ 120.000',
     category: 'arte',
+    subcategory: 'acrilico',
     images: [
       '/images/products/1.jpg'
     ],
@@ -100,6 +106,7 @@ export const PRODUCTS: Product[] = [
     price: 380,
     formattedPrice: '€ 380',
     category: 'arte',
+    subcategory: 'acrilico',
     images: [
       '/images/products/8.jpeg'
     ],
@@ -115,6 +122,7 @@ export const PRODUCTS: Product[] = [
     price: 150000,
     formattedPrice: '$ 150.000',
     category: 'mujer',
+    subcategory: 'blusas',
     images: [
       '/images/products/bluson-brisa.jpg'
     ],
@@ -131,6 +139,7 @@ export const PRODUCTS: Product[] = [
     price: 150000,
     formattedPrice: '$ 150.000',
     category: 'mujer',
+    subcategory: 'blusas',
     images: [
       '/images/products/blusa-romantixa.jpg'
     ],
@@ -147,6 +156,7 @@ export const PRODUCTS: Product[] = [
     price: 250000,
     formattedPrice: '$ 250.000',
     category: 'mujer',
+    subcategory: 'vestidos',
     images: [
       '/images/products/tunica-mariposa-1.jpg',
       '/images/products/tunica-mariposa-2.jpg',
@@ -166,6 +176,7 @@ export const PRODUCTS: Product[] = [
     price: 180000,
     formattedPrice: '$ 180.000',
     category: 'mujer',
+    subcategory: 'vestidos',
     images: [
       '/images/products/encuentro-1.jpg',
       '/images/products/encuentro-2.jpg'
@@ -176,5 +187,55 @@ export const PRODUCTS: Product[] = [
     isOneSize: false,
     hasSizes: true,
     availableSizes: ['M']
+  },
+  {
+    id: 'm11',
+    name: 'Pantalón en lino Olán',
+    price: 150000,
+    formattedPrice: '$ 150.000',
+    category: 'mujer',
+    subcategory: 'pantalones',
+    images: [
+      '/images/products/pantalon-lino-olan.png'
+    ],
+    description: 'Pantalón de lino olán con diseño exclusivo pintado a mano.',
+    details: ['Material: Lino Olán', 'Talla: S', 'Diseño exclusivo', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true,
+    availableSizes: ['S']
+  },
+  {
+    id: 'm12',
+    name: 'Blusa lazo (corta)',
+    price: 150000,
+    formattedPrice: '$ 150.000',
+    category: 'mujer',
+    subcategory: 'blusas',
+    images: [
+      '/images/products/blusa-lazo-corta-nueva.jpeg'
+    ],
+    description: 'Blusa corta de lino olán con detalle de lazo, pintada a mano.',
+    details: ['Material: Lino Olán', 'Talla: Única', 'Detalle de lazo frontal', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: true,
+    hasSizes: true
+  },
+  {
+    id: 'm13',
+    name: 'Conjunto en Lino',
+    price: 280000,
+    formattedPrice: '$ 280.000',
+    category: 'mujer',
+    subcategory: 'vestidos',
+    images: [
+      '/images/products/conjunto-lino.jpeg'
+    ],
+    description: 'Elegante conjunto de lino compuesto por dos piezas pintadas a mano.',
+    details: ['Material: Lino de alta calidad', 'Talla: S', 'Conjunto de dos piezas', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true,
+    availableSizes: ['S']
   }
 ];

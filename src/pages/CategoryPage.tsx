@@ -12,8 +12,22 @@ export default function CategoryPage() {
     categoryProducts = PRODUCTS.filter(p => p.isNew);
     title = 'Novedades';
   } else if (gender) {
-    categoryProducts = PRODUCTS.filter(p => p.category === gender.toLowerCase());
-    title = gender.charAt(0).toUpperCase() + gender.slice(1);
+    const term = gender.toLowerCase();
+    if (term === 'galeria-de-arte') {
+      categoryProducts = PRODUCTS.filter(p => p.category === 'arte');
+      title = 'Galería de Arte';
+    } else {
+      categoryProducts = PRODUCTS.filter(p => p.category === term || p.subcategory === term);
+      if (term === 'arte') {
+        title = 'Galería de Arte';
+      } else if (term === 'oleo') {
+        title = 'Óleo';
+      } else if (term === 'acrilico') {
+        title = 'Acrílico';
+      } else {
+        title = gender.charAt(0).toUpperCase() + gender.slice(1);
+      }
+    }
   } else {
     categoryProducts = PRODUCTS;
   }
