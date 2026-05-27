@@ -9,8 +9,8 @@ import { ArrowRight, Instagram } from 'lucide-react';
 export default function HomePage() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   
-  // We sort/slice the new products to show the most recent ones (max 4)
-  const newProducts = PRODUCTS.filter(p => p.isNew).slice(0, 4);
+  // Show only the latest 2 products in Novedades de Temporada
+  const newProducts = PRODUCTS.filter(p => p.isNew).slice(-2).reverse();
   const vestidosProducts = PRODUCTS.filter(p => p.subcategory === 'vestidos').slice(0, 4);
   const hogarProducts = PRODUCTS.filter(p => p.category === 'hogar').slice(0, 4);
   const artProducts = PRODUCTS.filter(p => p.category === 'arte').slice(0, 4);
@@ -114,7 +114,7 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-24"
+              className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-x-10 gap-y-24"
             >
               {newProducts.map((product) => (
                 <ProductCard 
