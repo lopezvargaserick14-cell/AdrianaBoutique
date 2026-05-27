@@ -9,7 +9,12 @@ import { ArrowRight, Instagram } from 'lucide-react';
 export default function HomePage() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   
-  const newProducts = PRODUCTS.filter(p => p.isNew);
+  // We sort/slice the new products to show the most recent ones (max 4)
+  const newProducts = PRODUCTS.filter(p => p.isNew).slice(0, 4);
+  const vestidosProducts = PRODUCTS.filter(p => p.subcategory === 'vestidos').slice(0, 4);
+  const hogarProducts = PRODUCTS.filter(p => p.category === 'hogar').slice(0, 4);
+  const artProducts = PRODUCTS.filter(p => p.category === 'arte').slice(0, 4);
+  
   const highlightedProducts = PRODUCTS.filter(p => !p.isNew);
 
   return (
@@ -71,7 +76,7 @@ export default function HomePage() {
       </section>
 
       {/* Intro Editorial */}
-      <section className="py-32 md:py-56 px-6 max-w-4xl mx-auto text-center">
+      <section className="py-32 md:py-48 px-6 max-w-4xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -88,33 +93,133 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      {/* Main Product Grid - Elegant & Airy */}
-      <section className="pb-32 md:pb-56 px-6 md:px-12 max-w-[1600px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+      {/* Main Product Grid - Secciones Categorizadas */}
+      <section className="pb-32 md:pb-48 px-6 md:px-12 max-w-[1600px] mx-auto space-y-40">
+        
+        {/* Novedades de Temporada */}
+        {newProducts.length > 0 && (
           <div>
-            <span className="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-4 block">Selección Curada</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-black">Novedades de Temporada</h2>
-          </div>
-          <Link to="/categoria/novedades" className="group flex items-center gap-3 uppercase tracking-[0.2em] text-[10px] text-black border-b border-black pb-2 hover:text-gray-500 hover:border-gray-500 transition-all">
-            Ver todo <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+              <div>
+                <span className="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-4 block">Selección Curada</span>
+                <h2 className="font-serif text-4xl md:text-5xl text-black">Novedades de Temporada</h2>
+              </div>
+              <Link to="/categoria/novedades" className="group flex items-center gap-3 uppercase tracking-[0.2em] text-[10px] text-black border-b border-black pb-2 hover:text-gray-500 hover:border-gray-500 transition-all">
+                Ver todo <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-24"
-        >
-          {newProducts.map((product) => (
-            <ProductCard 
-              key={product.id} 
-              product={product} 
-              onQuickView={(p) => setQuickViewProduct(p)} 
-            />
-          ))}
-        </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-24"
+            >
+              {newProducts.map((product) => (
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  onQuickView={(p) => setQuickViewProduct(p)} 
+                />
+              ))}
+            </motion.div>
+          </div>
+        )}
+
+        {/* Zona Vestidos */}
+        {vestidosProducts.length > 0 && (
+          <div>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+              <div>
+                <span className="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-4 block">Prendas de Vestir</span>
+                <h2 className="font-serif text-4xl md:text-5xl text-black">Vestidos</h2>
+              </div>
+              <Link to="/categoria/vestidos" className="group flex items-center gap-3 uppercase tracking-[0.2em] text-[10px] text-black border-b border-black pb-2 hover:text-gray-500 hover:border-gray-500 transition-all">
+                Ver todo <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-24"
+            >
+              {vestidosProducts.map((product) => (
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  onQuickView={(p) => setQuickViewProduct(p)} 
+                />
+              ))}
+            </motion.div>
+          </div>
+        )}
+
+        {/* Zona Hogar */}
+        {hogarProducts.length > 0 && (
+          <div>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+              <div>
+                <span className="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-4 block">Arte en tu Espacio</span>
+                <h2 className="font-serif text-4xl md:text-5xl text-black">Hogar</h2>
+              </div>
+              <Link to="/categoria/hogar" className="group flex items-center gap-3 uppercase tracking-[0.2em] text-[10px] text-black border-b border-black pb-2 hover:text-gray-500 hover:border-gray-500 transition-all">
+                Ver todo <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-24"
+            >
+              {hogarProducts.map((product) => (
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  onQuickView={(p) => setQuickViewProduct(p)} 
+                />
+              ))}
+            </motion.div>
+          </div>
+        )}
+
+        {/* Zona Galería de Arte */}
+        {artProducts.length > 0 && (
+          <div>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+              <div>
+                <span className="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-4 block">Obras de Arte</span>
+                <h2 className="font-serif text-4xl md:text-5xl text-black">Galería de Arte</h2>
+              </div>
+              <Link to="/categoria/galeria-de-arte" className="group flex items-center gap-3 uppercase tracking-[0.2em] text-[10px] text-black border-b border-black pb-2 hover:text-gray-500 hover:border-gray-500 transition-all">
+                Ver todo <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-24"
+            >
+              {artProducts.map((product) => (
+                <ProductCard 
+                  key={product.id} 
+                  product={product} 
+                  onQuickView={(p) => setQuickViewProduct(p)} 
+                />
+              ))}
+            </motion.div>
+          </div>
+        )}
+
       </section>
 
       {/* Large Feature Banner - The Dress */}
