@@ -34,7 +34,7 @@ export default function Navbar({ onOpenCart, onOpenSearch, onOpenProfile }: Navb
 
   return (
     <>
-      <div className="bg-black text-white text-[10px] py-2.5 text-center tracking-[0.2em] uppercase font-light relative z-[60]">
+      <div className="bg-[#8B4513] text-white text-[10px] py-2.5 text-center tracking-[0.2em] uppercase font-light relative z-[60]">
         Envíos gratis a Colombia por compras superiores a $300.000 COP
       </div>
 

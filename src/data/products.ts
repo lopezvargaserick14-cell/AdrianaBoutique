@@ -32,7 +32,8 @@ export const PRODUCTS: Product[] = [
     details: ['Técnica: Acriltex sobre Lino Olán', 'Talla: L (Pieza única)', 'Composición: 100% Lino', 'Pintado a mano por Adriana Barrera'],
     isNew: true,
     isOneSize: true,
-    hasSizes: true
+    hasSizes: true,
+    isSold: true
   },
   {
     id: 'm3',
@@ -49,7 +50,8 @@ export const PRODUCTS: Product[] = [
     details: ['Técnica: Acriltex sobre Lino Olán', 'Color: Blanco', 'Talla: Única', 'Pintado a mano por Adriana Barrera'],
     isNew: true,
     isOneSize: true,
-    hasSizes: true
+    hasSizes: true,
+    isSold: true
   },
   {
     id: 'a3',
@@ -218,7 +220,8 @@ export const PRODUCTS: Product[] = [
     details: ['Material: Lino Olán', 'Talla: Única', 'Detalle de lazo frontal', 'Pintado a mano por Adriana Barrera'],
     isNew: true,
     isOneSize: true,
-    hasSizes: true
+    hasSizes: true,
+    isSold: true
   },
   {
     id: 'm13',
