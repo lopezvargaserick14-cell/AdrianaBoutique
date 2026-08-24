@@ -24,12 +24,12 @@ export default function HomePage() {
         <div className="absolute inset-0 z-0 p-4 md:p-8 pt-[90px] md:pt-[110px]">
           <div className="w-full h-full overflow-hidden relative group">
              <img 
-               src="/prin.jpeg"
-               alt="Hero Background"
-               className="w-full h-full object-contain md:object-cover object-center absolute inset-0 filter brightness-[0.85] contrast-[1.1] saturate-[1.15]"
+               src="/images/products/vestido-guacamayo-azul.jpeg"
+               alt="Vestido Guacamayo Azul - Portada Adriana Barrera"
+               className="w-full h-full object-cover object-[center_25%] absolute inset-0 filter brightness-[0.88] contrast-[1.08] saturate-[1.1]"
              />
 
-             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-black/20" />
           </div>
         </div>
 

@@ -115,7 +115,8 @@ export const PRODUCTS: Product[] = [
     details: ['Técnica: Acrílico texturizado', 'Dimensiones: 25cm x 25cm', 'Autenticidad garantizada', 'Artista: Adriana Barrera'],
     isNew: false,
     isOneSize: false,
-    hasSizes: false
+    hasSizes: false,
+    isSold: true
   },
   {
     id: 'm7',
@@ -132,7 +133,8 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isOneSize: false,
     hasSizes: true,
-    availableSizes: ['XL']
+    availableSizes: ['XL'],
+    isSold: true
   },
   {
     id: 'm8',
@@ -149,7 +151,8 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isOneSize: false,
     hasSizes: true,
-    availableSizes: ['S']
+    availableSizes: ['S'],
+    isSold: true
   },
   {
     id: 'm9',
@@ -204,7 +207,8 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isOneSize: false,
     hasSizes: true,
-    availableSizes: ['S']
+    availableSizes: ['S'],
+    isSold: true
   },
   {
     id: 'm12',
