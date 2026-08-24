@@ -1,11 +1,14 @@
 import { useParams, Link } from 'react-router-dom';
-import { PRODUCTS } from '../data/products';
+import { PRODUCTS, Product } from '../data/products';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import SizeGuideModal from '../components/ui/SizeGuideModal';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import { getPrices } from '../utils/currency';
+import ProductCard from '../components/ui/ProductCard';
+import ProductQuickView from '../components/ui/ProductQuickView';
+import { ArrowRight } from 'lucide-react';
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -13,6 +16,7 @@ export default function ProductPage() {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
@@ -27,8 +31,36 @@ export default function ProductPage() {
       } else {
         setSelectedSize(null);
       }
+      setSelectedImage(0);
     }
   }, [id, product]);
+
+  // Embudo de ventas / Productos relacionados
+  const relatedProducts = (() => {
+    if (!product) return [];
+    
+    // Prioridad 1: Misma subcategoría (ej. otros vestidos)
+    const sameSubcategory = PRODUCTS.filter(
+      p => p.id !== product.id && p.subcategory && p.subcategory === product.subcategory
+    );
+    
+    // Prioridad 2: Misma categoría principal (ej. mujer)
+    const sameCategory = PRODUCTS.filter(
+      p => p.id !== product.id && p.category === product.category && (!product.subcategory || p.subcategory !== product.subcategory)
+    );
+    
+    // Prioridad 3: Otras piezas del catálogo
+    const otherProducts = PRODUCTS.filter(
+      p => p.id !== product.id && p.category !== product.category
+    );
+    
+    // Combinar priorizando las piezas disponibles para compra
+    const combined = [...sameSubcategory, ...sameCategory, ...otherProducts];
+    const unsold = combined.filter(p => !p.isSold);
+    const sold = combined.filter(p => p.isSold);
+    
+    return [...unsold, ...sold].slice(0, 4);
+  })();
 
   if (!product) {
     return (
@@ -240,8 +272,47 @@ export default function ProductPage() {
         </div>
       </div>
 
+      {/* Sales Funnel / Related Products Grid */}
+      {relatedProducts.length > 0 && (
+        <section className="mt-28 md:mt-40 pt-16 md:pt-24 border-t border-gray-100 px-6 lg:px-0">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+            <div>
+              <span className="uppercase tracking-[0.3em] text-[10px] text-gray-400 mb-3 block">
+                Descubre Más
+              </span>
+              <h2 className="font-serif text-3xl md:text-5xl text-black">
+                También te podría encantar
+              </h2>
+            </div>
+            <Link
+              to={`/categoria/${product.category}`}
+              className="group flex items-center gap-3 uppercase tracking-[0.2em] text-[10px] text-black border-b border-black pb-2 hover:text-gray-500 hover:border-gray-500 transition-all"
+            >
+              Ver colección completa <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16">
+            {relatedProducts.map((relProduct) => (
+              <ProductCard
+                key={relProduct.id}
+                product={relProduct}
+                onQuickView={(p) => setQuickViewProduct(p)}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* Size Guide Modal */}
       <SizeGuideModal isOpen={isSizeGuideOpen} onClose={() => setIsSizeGuideOpen(false)} />
+
+      {/* Quick View Modal */}
+      <ProductQuickView 
+        product={quickViewProduct} 
+        onClose={() => setQuickViewProduct(null)} 
+      />
     </div>
   );
 }
+
