@@ -50,11 +50,18 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
                           onClick={onClose}
                           className="group"
                         >
-                          <div className="aspect-[3/4] bg-gray-50 mb-4 overflow-hidden">
+                          <div className="aspect-[3/4] bg-gray-50 mb-4 overflow-hidden relative">
                             <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" />
+                            {product.isSold && (
+                              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <span className="bg-black text-white px-3 py-1 text-[8px] tracking-widest uppercase font-bold">Vendido</span>
+                              </div>
+                            )}
                           </div>
                           <h4 className="text-[10px] uppercase tracking-[0.1em] mb-1 group-hover:text-gray-500 transition-colors">{product.name}</h4>
-                          <p className="text-gray-500 text-sm font-light">{product.formattedPrice}</p>
+                          <p className={`text-sm font-light ${product.isSold ? 'text-red-700 font-medium' : 'text-gray-500'}`}>
+                            {product.isSold ? 'Vendido' : product.formattedPrice}
+                          </p>
                         </Link>
                      ))}
                   </div>

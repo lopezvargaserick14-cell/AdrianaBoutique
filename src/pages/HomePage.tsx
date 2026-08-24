@@ -282,12 +282,19 @@ export default function HomePage() {
               <div className="flex flex-col gap-12 pt-8">
                 {highlightedProducts.filter(p => p.category === 'arte').map(product => (
                   <Link key={product.id} to={`/producto/${product.id}`} className="flex gap-8 group">
-                    <div className="w-24 h-24 overflow-hidden flex-shrink-0 bg-white shadow-sm">
+                    <div className="w-24 h-24 overflow-hidden flex-shrink-0 bg-white shadow-sm relative">
                       <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      {product.isSold && (
+                        <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                          <span className="bg-black text-white px-2 py-0.5 text-[8px] tracking-widest uppercase font-bold">Vendido</span>
+                        </div>
+                      )}
                     </div>
                     <div className="flex flex-col justify-center">
                       <h4 className="font-serif text-lg text-black group-hover:text-gray-500 transition-colors">{product.name}</h4>
-                      <span className="text-gray-400 text-xs tracking-widest uppercase mt-1">{product.formattedPrice}</span>
+                      <span className={`text-xs tracking-widest uppercase mt-1 ${product.isSold ? 'text-red-700 font-semibold' : 'text-gray-400'}`}>
+                        {product.isSold ? 'Vendido' : product.formattedPrice}
+                      </span>
                     </div>
                   </Link>
                 ))}

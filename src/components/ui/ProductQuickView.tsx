@@ -58,7 +58,7 @@ export default function ProductQuickView({ product, onClose }: ProductQuickViewP
                 {product.name}
               </h2>
               <p className={`text-xl font-light mb-8 ${product.isSold ? 'text-red-600 font-bold uppercase tracking-widest' : 'text-gray-900'}`}>
-                {product.isSold ? 'Vendida' : product.formattedPrice}
+                {product.isSold ? 'Vendido' : product.formattedPrice}
               </p>
               
               <div className="space-y-6 mb-10">

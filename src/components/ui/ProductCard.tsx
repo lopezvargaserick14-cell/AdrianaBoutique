@@ -5,7 +5,7 @@ import { Eye } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
-  onQuickView: (product: Product) => void;
+  onQuickView?: (product: Product) => void;
 }
 
 export default function ProductCard({ product, onQuickView }: ProductCardProps) {
@@ -22,12 +22,12 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
           <img 
             src={product.images[0]} 
             alt={product.name}
-            className="object-cover w-full h-full group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-out filter brightness-[1.02]"
+            className={`object-cover w-full h-full group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-out filter brightness-[1.02] ${product.isSold ? 'opacity-85' : ''}`}
           />
         </Link>
         
         {/* Quick View Button */}
-        {!product.isSold && (
+        {!product.isSold && onQuickView && (
           <button 
             onClick={(e) => {
               e.preventDefault();
@@ -40,10 +40,11 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
           </button>
         )}
 
+        {/* Sold Badge */}
         {product.isSold && (
-          <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] flex items-center justify-center z-10 pointer-events-none">
-            <span className="bg-black text-white px-6 py-2 uppercase tracking-[0.3em] text-[10px] font-bold shadow-xl">
-              Vendida
+          <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px] flex items-center justify-center z-10 pointer-events-none">
+            <span className="bg-black/95 text-white px-5 py-2 uppercase tracking-[0.25em] text-[10px] font-bold shadow-2xl border border-white/20">
+              Vendido
             </span>
           </div>
         )}
@@ -59,7 +60,9 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
         <h3 className="font-sans text-[11px] text-black uppercase tracking-[0.18em] font-light mt-1 group-hover:text-gray-500 transition-colors duration-500">
           {product.name}
         </h3>
-        <span className="text-[#8B6914] font-medium text-[13px] tracking-widest">{product.formattedPrice}</span>
+        <span className={`text-[13px] tracking-widest ${product.isSold ? 'text-red-700 font-semibold uppercase' : 'text-[#8B6914] font-medium'}`}>
+          {product.isSold ? 'Vendido' : product.formattedPrice}
+        </span>
         
         <div className="mt-3 flex flex-col gap-1">
           {product.details.slice(0, 2).map((detail, idx) => (
@@ -72,3 +75,4 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
     </motion.div>
   );
 }
+

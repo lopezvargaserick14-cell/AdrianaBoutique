@@ -130,7 +130,7 @@ export default function ProductPage() {
           <div className="flex flex-col gap-1 mb-12">
             <div className="flex items-center gap-4">
               <span className={`text-2xl md:text-3xl font-light ${product.isSold ? 'text-red-600 font-bold tracking-widest uppercase' : 'text-gray-900'}`}>
-                {product.isSold ? 'Vendida' : getPrices(product.price, product.formattedPrice).formattedCop}
+                {product.isSold ? 'Vendido' : getPrices(product.price, product.formattedPrice).formattedCop}
               </span>
               {!product.isSold && <div className="h-px flex-1 bg-gray-100"></div>}
             </div>
