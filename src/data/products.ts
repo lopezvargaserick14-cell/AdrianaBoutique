@@ -239,5 +239,53 @@ export const PRODUCTS: Product[] = [
     isOneSize: false,
     hasSizes: true,
     availableSizes: ['S']
+  },
+  {
+    id: 'm14',
+    name: 'Vestido Guacamayo Azul',
+    price: 270000,
+    formattedPrice: '$ 270.000',
+    category: 'mujer',
+    subcategory: 'vestidos',
+    images: [
+      '/images/products/vestido-guacamayo-azul.jpeg'
+    ],
+    description: 'Inspirado en el esplendor de las guacamayas azules de Colombia y su majestuosidad como una representación viva de la belleza de nuestro ecosistema.',
+    details: [
+      'Tela: Lino Olán color azul medianoche',
+      'Talla: M',
+      'Corte: Corte princesa',
+      'Técnica: Pintura acrílica de tela con pincel',
+      'Pieza única',
+      'Pintado a mano por Adriana Barrera'
+    ],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true,
+    availableSizes: ['M']
+  },
+  {
+    id: 'm15',
+    name: 'Vestido Largo Momotus',
+    price: 320000,
+    formattedPrice: '$ 320.000',
+    category: 'mujer',
+    subcategory: 'vestidos',
+    images: [
+      '/images/products/vestido-largo-azul-1.jpeg',
+      '/images/products/vestido-largo-azul-2.jpeg'
+    ],
+    description: 'Pintura inspirada en las aves de Santander como el momotus equatorialis. El color y la vida en los jardines de nuestro entorno.',
+    details: [
+      'Tela: Lino Olán color azul medianoche',
+      'Talla: L',
+      'Técnica: Pintura acrílica de tela con pincel',
+      'Pieza única',
+      'Pintado a mano por Adriana Barrera'
+    ],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true,
+    availableSizes: ['L']
   }
 ];
