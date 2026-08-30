@@ -8,7 +8,8 @@ import { useNavigate } from 'react-router-dom';
 import { getPrices } from '../utils/currency';
 import ProductCard from '../components/ui/ProductCard';
 import ProductQuickView from '../components/ui/ProductQuickView';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Share2 } from 'lucide-react';
+import SEOTags from '../components/seo/SEOTags';
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -141,19 +142,58 @@ export default function ProductPage() {
             )}
           </div>
 
-          <div className="space-y-8 mb-12">
-            <p className="text-gray-600 font-light leading-relaxed text-lg">
-              {product.description}
-            </p>
-            <div className="flex flex-col gap-3">
-              {product.details.map((detail, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-sm text-gray-500">
-                  <span className="w-1 h-1 bg-black rounded-full"></span>
-                  {detail}
+            <div className="space-y-8 mb-12">
+              <p className="text-gray-600 font-light leading-relaxed text-lg">
+                {product.description}
+              </p>
+              
+              <div className="border-t border-gray-100 pt-8">
+                <h3 className="font-serif text-xl mb-4">Detalles de la Pieza</h3>
+                <ul className="list-disc pl-5 space-y-2 text-gray-500 font-light">
+                  {product.details.map((detail, idx) => (
+                    <li key={idx}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {!product.isOneSize && product.hasSizes && (
+                <div className="border-t border-gray-100 pt-8">
+                  <h3 className="font-serif text-xl mb-4">Guía de Tallas (Referencia)</h3>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-sm text-left text-gray-500 border-collapse">
+                      <thead className="text-xs uppercase bg-gray-50 text-gray-700">
+                        <tr>
+                          <th className="py-3 px-4 border border-gray-200">Talla</th>
+                          <th className="py-3 px-4 border border-gray-200">Pecho (cm)</th>
+                          <th className="py-3 px-4 border border-gray-200">Cintura (cm)</th>
+                          <th className="py-3 px-4 border border-gray-200">Cadera (cm)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr className="bg-white border-b border-gray-200">
+                          <td className="py-3 px-4 border-r">S</td>
+                          <td className="py-3 px-4 border-r">86-90</td>
+                          <td className="py-3 px-4 border-r">66-70</td>
+                          <td className="py-3 px-4 border-r">92-96</td>
+                        </tr>
+                        <tr className="bg-gray-50 border-b border-gray-200">
+                          <td className="py-3 px-4 border-r">M</td>
+                          <td className="py-3 px-4 border-r">90-94</td>
+                          <td className="py-3 px-4 border-r">70-74</td>
+                          <td className="py-3 px-4 border-r">96-100</td>
+                        </tr>
+                        <tr className="bg-white">
+                          <td className="py-3 px-4 border-r">L</td>
+                          <td className="py-3 px-4 border-r">94-100</td>
+                          <td className="py-3 px-4 border-r">74-80</td>
+                          <td className="py-3 px-4 border-r">100-106</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
-              ))}
+              )}
             </div>
-          </div>
 
           {/* Size Selector */}
           {!product.isSold && (
@@ -237,22 +277,32 @@ export default function ProductPage() {
                   Añadir a la Bolsa
                 </button>
                 
-                <button 
-                  type="button"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    if (!selectedSize) {
-                      alert("Por favor, selecciona una talla antes de comprar.");
-                      return;
-                    }
-                    console.log("Acción: Comprar ahora");
-                    addToCart(product, selectedSize, true);
-                    setTimeout(() => navigate('/checkout'), 100);
-                  }}
-                  className="w-full border-2 border-black text-black hover:bg-black hover:text-white py-6 uppercase tracking-[0.3em] text-[11px] font-bold transition-all duration-500 active:scale-[0.98] cursor-pointer"
-                >
-                  Comprar Ahora
-                </button>
+                <div className="flex gap-4">
+                  <button 
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      if (!selectedSize) {
+                        alert("Por favor, selecciona una talla antes de comprar.");
+                        return;
+                      }
+                      addToCart(product, selectedSize);
+                      navigate('/checkout');
+                    }}
+                    className="flex-1 border border-black text-black hover:bg-black hover:text-white py-6 uppercase tracking-[0.3em] text-[11px] font-bold transition-all duration-500 active:scale-[0.98] cursor-pointer"
+                  >
+                    Comprar Ahora
+                  </button>
+                  
+                  <button 
+                    type="button"
+                    onClick={handleShare}
+                    className="px-6 border border-gray-200 text-gray-500 hover:text-black hover:border-black flex items-center justify-center transition-colors"
+                    title="Compartir"
+                  >
+                    <Share2 size={20} strokeWidth={1.5} />
+                  </button>
+                </div>
               </>
             )}
           </div>

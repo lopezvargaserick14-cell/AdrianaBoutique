@@ -4,6 +4,7 @@ import { useCart } from '../context/CartContext';
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
 import { CheckCircle, ArrowLeft, CreditCard, Building2, Wallet } from 'lucide-react';
 import { getPrices } from '../utils/currency';
+import SEOTags from '../components/seo/SEOTags';
 
 const WOMPI_PUBLIC_KEY = import.meta.env.VITE_WOMPI_PUBLIC_KEY || '';
 const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID || 'test';
@@ -18,39 +19,33 @@ export default function CheckoutPage() {
   const { cart, clearCart } = useCart();
   const subtotalCOP = cart.reduce((sum, item) => sum + getPrices(item.price, item.formattedPrice, item.quantity).cop, 0);
   const subtotalEUR = cart.reduce((sum, item) => sum + getPrices(item.price, item.formattedPrice, item.quantity).eur, 0);
+  const totalCOP = subtotalCOP;
+  const totalEUR = subtotalEUR;
   const navigate = useNavigate();
-  const wompiRef = useRef<HTMLDivElement>(null);
+  const wompiFormRef = useRef<HTMLFormElement>(null);
 
-  useEffect(() => { window.scrollTo(0, 0); }, []);
-
-  // Redirigir si el carrito está vacío
   useEffect(() => {
-    if (cart.length === 0 && step !== 'success') navigate('/');
-  }, [cart]);
+    window.scrollTo(0, 0);
+  }, [step]);
 
-  // Wompi Widget: solo se monta cuando el método es 'card' o 'pse'
+  // Wompi Widget integration
   useEffect(() => {
-    if (step !== 'payment' || !wompiRef.current) return;
-    if (paymentMethod !== 'card' && paymentMethod !== 'pse') return;
-    if (!WOMPI_PUBLIC_KEY || WOMPI_PUBLIC_KEY.includes('REEMPLAZA')) return;
-
-    // Limpiar widget anterior
-    wompiRef.current.innerHTML = '';
-
-    const script = document.createElement('script');
-    script.src = 'https://checkout.wompi.co/widget.js';
-    script.setAttribute('data-render', 'button');
-    script.setAttribute('data-public-key', WOMPI_PUBLIC_KEY);
-    script.setAttribute('data-currency', 'COP');
-    script.setAttribute('data-amount-in-cents', String(Math.round(subtotalCOP) * 100));
-    script.setAttribute('data-reference', `ADRIANA-${Date.now()}`);
-    script.setAttribute('data-customer-data:email', formData.email);
-    script.setAttribute('data-customer-data:full-name', `${formData.name} ${formData.lastName}`);
-    script.setAttribute('data-customer-data:phone-number', formData.phone);
-    script.setAttribute('data-payment-methods', paymentMethod === 'pse' ? 'PSE' : 'CARD');
-
-    wompiRef.current.appendChild(script);
-  }, [step, paymentMethod, subtotalCOP]);
+    if (step === 'payment' && paymentMethod === 'card' && wompiFormRef.current) {
+      wompiFormRef.current.innerHTML = '';
+      const script = document.createElement('script');
+      script.src = 'https://checkout.wompi.co/widget.js';
+      script.setAttribute('data-render', 'button');
+      script.setAttribute('data-public-key', WOMPI_PUBLIC_KEY);
+      script.setAttribute('data-currency', 'COP');
+      script.setAttribute('data-amount-in-cents', (totalCOP * 100).toString());
+      script.setAttribute('data-reference', `ORDER-${Date.now()}`);
+      script.setAttribute('data-customer-data:email', formData.email);
+      script.setAttribute('data-customer-data:full-name', `${formData.name} ${formData.lastName}`);
+      script.setAttribute('data-customer-data:phone-number', formData.phone);
+      script.setAttribute('data-redirect-url', window.location.origin + '/checkout?status=success');
+      wompiFormRef.current.appendChild(script);
+    }
+  }, [step, paymentMethod, totalCOP, formData]);
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -62,27 +57,41 @@ export default function CheckoutPage() {
     setStep('success');
   };
 
+  if (cart.length === 0 && step !== 'success') {
+    return (
+      <main className="h-screen flex flex-col items-center justify-center bg-white">
+        <SEOTags title="Carrito de Compras" description="Tu carrito de compras está vacío." />
+        <h1 className="font-serif text-3xl mb-4">Tu bolsa está vacía</h1>
+        <Link to="/" className="border-b border-black pb-1 uppercase tracking-[0.2em] text-[10px]">
+          Volver a la tienda
+        </Link>
+      </main>
+    );
+  }
+
   if (step === 'success') {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
+      <main className="min-h-screen flex flex-col items-center justify-center bg-white px-6 text-center">
+        <SEOTags title="Compra Exitosa" description="Gracias por tu compra en Adriana Barrera." />
         <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mb-8">
           <CheckCircle size={40} className="text-green-500" strokeWidth={1} />
         </div>
         <h1 className="font-serif text-4xl mb-4">¡Gracias por tu compra!</h1>
-        <p className="text-gray-400 font-light text-sm max-w-md leading-loose mb-12">
-          Hemos recibido tu pedido. Recibirás una confirmación en <strong>{formData.email}</strong> en los próximos minutos.
+        <p className="text-gray-500 font-light max-w-md mx-auto mb-10">
+          Hemos enviado un correo de confirmación con los detalles de tu pedido. Nos pondremos en contacto pronto para coordinar el envío.
         </p>
-        <Link to="/" className="uppercase tracking-[0.3em] text-[10px] border-b border-black pb-1 hover:text-gray-400 hover:border-gray-400 transition-all">
-          Volver a la Tienda
+        <Link to="/" className="border border-black px-12 py-4 uppercase tracking-[0.2em] text-[10px] hover:bg-black hover:text-white transition-colors">
+          Seguir Explorando
         </Link>
-      </div>
+      </main>
     );
   }
 
   return (
     <PayPalScriptProvider options={{ clientId: PAYPAL_CLIENT_ID, currency: 'USD' }}>
-      <div className="pt-24 md:pt-32 pb-24 md:pb-40 px-6 md:px-12 max-w-[1400px] mx-auto bg-white min-h-screen">
-
+      <main className="pt-24 md:pt-32 pb-24 md:pb-40 px-6 md:px-12 max-w-[1400px] mx-auto bg-white min-h-screen">
+        <SEOTags title="Checkout" description="Finaliza tu compra de forma segura." />
+        
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-16">
           <Link to="/" className="flex items-center gap-2 text-gray-400 hover:text-black transition-colors text-[10px] uppercase tracking-widest mb-8 self-start">
@@ -287,7 +296,7 @@ export default function CheckoutPage() {
           </div>
 
         </div>
-      </div>
+      </main>
     </PayPalScriptProvider>
   );
 }

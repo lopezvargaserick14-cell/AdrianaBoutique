@@ -21,7 +21,7 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
         <Link to={`/producto/${product.id}`}>
           <img 
             src={product.images[0]} 
-            alt={product.name}
+            alt={`${product.name} - Ropa pintada a mano por Adriana Barrera`}
             className={`object-cover w-full h-full group-hover:scale-[1.03] transition-transform duration-[1.5s] ease-out filter brightness-[1.02] ${product.isSold ? 'opacity-85' : ''}`}
           />
         </Link>

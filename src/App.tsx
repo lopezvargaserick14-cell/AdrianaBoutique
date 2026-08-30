@@ -8,6 +8,7 @@ import SearchModal from './components/ui/SearchModal';
 import WhatsAppButton from './components/ui/WhatsAppButton';
 import Preloader from './components/ui/Preloader';
 import NewsletterModal from './components/ui/NewsletterModal';
+import MobileStickyCTA from './components/ui/MobileStickyCTA';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
@@ -19,7 +20,7 @@ function AppContent() {
   const [isNewsletterOpen, setIsNewsletterOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black flex flex-col">
+    <div className="min-h-screen bg-white text-black font-sans selection:bg-gray-200 selection:text-black flex flex-col pb-[76px] md:pb-0">
       <Navbar 
         onOpenCart={openCart}
         onOpenSearch={() => setIsSearchOpen(true)}
@@ -41,6 +42,7 @@ function AppContent() {
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
       <NewsletterModal isOpen={isNewsletterOpen} onClose={() => setIsNewsletterOpen(false)} />
       <WhatsAppButton />
+      <MobileStickyCTA />
     </div>
   );
 }

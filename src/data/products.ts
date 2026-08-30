@@ -17,7 +17,7 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   {
-    id: 'm1',
+    id: 'vestido-guacamayas',
     name: 'Vestido Guacamayas',
     price: 250000,
     formattedPrice: '$ 250.000',
@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'm3',
+    id: 'blusa-lazo-corta',
     name: 'Blusa Lazo Corta',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -54,7 +54,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'a3',
+    id: 'pavito-migratorio',
     name: 'Pavito Migratorio',
     price: 120000,
     formattedPrice: '$ 120.000',
@@ -70,7 +70,7 @@ export const PRODUCTS: Product[] = [
     hasSizes: false
   },
   {
-    id: 'm6',
+    id: 'canasto-en-iraca',
     name: 'Canasto en Iraca',
     price: 60000,
     formattedPrice: '$ 60.000',
@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
     hasSizes: false
   },
   {
-    id: 'a1',
+    id: 'cuadro-de-colibr',
     name: 'Cuadro de Colibrí',
     price: 120000,
     formattedPrice: '$ 120.000',
@@ -103,7 +103,7 @@ export const PRODUCTS: Product[] = [
     hasSizes: false
   },
   {
-    id: 'a2',
+    id: 'obra-original-vuelo-en-azul',
     name: 'Obra Original "Vuelo en Azul"',
     price: 380,
     formattedPrice: '€ 380',
@@ -119,7 +119,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'm7',
+    id: 'blus-n-brisa-verde-pistacho',
     name: 'Blusón Brisa Verde Pistacho',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -137,7 +137,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'm8',
+    id: 'blus-n-rom-ntica',
     name: 'Blusón romántica',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -155,7 +155,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'm9',
+    id: 't-nica-mariposa-end-mica',
     name: 'Túnica Mariposa Endémica',
     price: 250000,
     formattedPrice: '$ 250.000',
@@ -175,7 +175,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'm10',
+    id: 'encuentro',
     name: 'Encuentro',
     price: 180000,
     formattedPrice: '$ 180.000',
@@ -193,7 +193,7 @@ export const PRODUCTS: Product[] = [
     availableSizes: ['M']
   },
   {
-    id: 'm11',
+    id: 'pantal-n-en-lino-ol-n',
     name: 'Pantalón en lino Olán',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -211,7 +211,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'm12',
+    id: 'blusa-lazo-corta',
     name: 'Blusa lazo (corta)',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -228,7 +228,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'm13',
+    id: 'conjunto-en-lino',
     name: 'Conjunto en Lino',
     price: 280000,
     formattedPrice: '$ 280.000',
@@ -245,7 +245,7 @@ export const PRODUCTS: Product[] = [
     availableSizes: ['S']
   },
   {
-    id: 'm14',
+    id: 'vestido-guacamayo-azul',
     name: 'Vestido Guacamayo Azul',
     price: 270000,
     formattedPrice: '$ 270.000',
@@ -269,7 +269,7 @@ export const PRODUCTS: Product[] = [
     availableSizes: ['M']
   },
   {
-    id: 'm15',
+    id: 'vestido-largo-momotus',
     name: 'Vestido Largo Momotus',
     price: 320000,
     formattedPrice: '$ 320.000',

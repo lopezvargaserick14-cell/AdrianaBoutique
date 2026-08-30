@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /page/
 
 Sitemap: https://www.adrianabarrera.com/sitemap.xml

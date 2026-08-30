@@ -3,6 +3,7 @@ import { PRODUCTS, Product } from '../data/products';
 import { useEffect, useState } from 'react';
 import ProductCard from '../components/ui/ProductCard';
 import ProductQuickView from '../components/ui/ProductQuickView';
+import SEOTags from '../components/seo/SEOTags';
 
 export default function CategoryPage() {
   const { gender } = useParams<{ gender: string }>();
@@ -28,7 +29,7 @@ export default function CategoryPage() {
       } else if (term === 'acrilico') {
         title = 'Acrílico';
       } else {
-        title = gender.charAt(0).toUpperCase() + gender.slice(1);
+        title = term.charAt(0).toUpperCase() + term.slice(1);
       }
     }
   } else {
@@ -41,7 +42,11 @@ export default function CategoryPage() {
   }, [gender]);
 
   return (
-    <div className="pt-32 pb-24 md:pt-48 md:pb-40 px-6 md:px-12 max-w-[1400px] mx-auto bg-white min-h-screen">
+    <main className="pt-32 pb-24 md:pt-48 md:pb-40 px-6 md:px-12 max-w-[1400px] mx-auto bg-white min-h-screen">
+      <SEOTags 
+        title={title} 
+        description={`Explora nuestra colección de ${title}. Piezas únicas pintadas a mano por Adriana Barrera.`}
+      />
       <div className="flex flex-col items-center text-center mb-16 md:mb-24">
         <h1 className="font-serif text-4xl md:text-5xl text-black mb-6">{title}</h1>
         <div className="w-px h-12 bg-black/20 mb-8"></div>
@@ -81,7 +86,7 @@ export default function CategoryPage() {
         product={quickViewProduct} 
         onClose={() => setQuickViewProduct(null)} 
       />
-    </div>
+    </main>
   );
 }
 

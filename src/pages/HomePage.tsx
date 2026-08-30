@@ -5,6 +5,8 @@ import { PRODUCTS, Product } from '../data/products';
 import ProductCard from '../components/ui/ProductCard';
 import ProductQuickView from '../components/ui/ProductQuickView';
 import { ArrowRight, Instagram } from 'lucide-react';
+import SEOTags from '../components/seo/SEOTags';
+import FAQSection from '../components/ui/FAQSection';
 
 export default function HomePage() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
@@ -19,6 +21,10 @@ export default function HomePage() {
 
   return (
     <main className="bg-white overflow-hidden">
+      <SEOTags 
+        title="Inicio" 
+        description="Explora la colección exclusiva de Adriana Barrera. Ropa y accesorios de moda pintados a mano. Cada prenda es una obra de arte original que combina moda y pintura."
+      />
       {/* Hero Section - High End Aesthetic */}
       <section className="relative h-[90vh] md:h-screen w-full flex items-center justify-center">
         <div className="absolute inset-0 z-0 p-4 md:p-8 pt-[90px] md:pt-[110px]">
@@ -87,9 +93,15 @@ export default function HomePage() {
             Entre la fauna y la flora colombiana
           </h2>
           <div className="w-12 h-[1px] bg-black mx-auto mb-12"></div>
-          <p className="text-gray-500 font-light leading-loose text-base md:text-lg max-w-2xl mx-auto">
-            Adriana Barrera es una artista y diseñadora que ha creado del arte un estilo de vida, personalizando, haciendo de cada pieza elaborada una obra divina con la que puedes conectar en diferente escenarios de tu vida, y la naturaleza es su fuente de inspiracion!
+          <p className="text-gray-500 font-light leading-loose text-base md:text-lg max-w-2xl mx-auto mb-10">
+            Adriana Barrera es una artista y diseñadora que ha creado del arte un estilo de vida, haciendo de cada pieza elaborada una obra divina con la que puedes conectar en diferentes escenarios de tu vida. Desde nuestros exclusivos <Link to="/categoria/vestidos" className="text-black border-b border-black hover:text-gray-400 hover:border-gray-400 transition-colors">vestidos pintados</Link> hasta nuestras piezas para <Link to="/categoria/hogar" className="text-black border-b border-black hover:text-gray-400 hover:border-gray-400 transition-colors">el hogar</Link>, la naturaleza es siempre nuestra fuente de inspiración.
           </p>
+          <Link
+            to="/categoria/mujer"
+            className="inline-block bg-black text-white px-10 py-4 uppercase tracking-[0.2em] text-[10px] hover:bg-gray-800 transition-all shadow-lg"
+          >
+            Explora Nuestras Colecciones
+          </Link>
         </motion.div>
       </section>
 
@@ -351,6 +363,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Quick View Modal */}
       <ProductQuickView 
