@@ -11,17 +11,6 @@
     }
   ],
   "rewrites": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "Accept",
-          "value": ".*text/markdown.*"
-        }
-      ],
-      "destination": "/api/markdown"
-    },
     { "source": "/", "destination": "/index.html" },
     { "source": "/categoria/(.*)", "destination": "/index.html" },
     { "source": "/producto/(.*)", "destination": "/index.html" },
