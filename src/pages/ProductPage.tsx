@@ -21,6 +21,24 @@ export default function ProductPage() {
   const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  const handleShare = async () => {
+    if (!product) return;
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: `${product.name} | Adriana Barrera`,
+          text: product.description,
+          url: window.location.href,
+        });
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        alert("Enlace copiado al portapapeles");
+      }
+    } catch (error) {
+      console.log('Error sharing:', error);
+    }
+  };
+
   // Scroll to top on load and set default size
   useEffect(() => {
     window.scrollTo(0, 0);
