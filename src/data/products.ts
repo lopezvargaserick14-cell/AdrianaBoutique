@@ -87,7 +87,7 @@ export const PRODUCTS: Product[] = [
     hasSizes: false
   },
   {
-    id: 'cuadro-de-colibr',
+    id: 'cuadro-de-colibri',
     name: 'Cuadro de Colibrí',
     price: 120000,
     formattedPrice: '$ 120.000',
@@ -119,7 +119,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'blus-n-brisa-verde-pistacho',
+    id: 'bluson-brisa-verde-pistacho',
     name: 'Blusón Brisa Verde Pistacho',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -137,7 +137,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'blus-n-rom-ntica',
+    id: 'bluson-romantica',
     name: 'Blusón romántica',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -155,7 +155,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 't-nica-mariposa-end-mica',
+    id: 'tunica-mariposa-endemica',
     name: 'Túnica Mariposa Endémica',
     price: 250000,
     formattedPrice: '$ 250.000',
@@ -193,7 +193,7 @@ export const PRODUCTS: Product[] = [
     availableSizes: ['M']
   },
   {
-    id: 'pantal-n-en-lino-ol-n',
+    id: 'pantalon-en-lino-olan',
     name: 'Pantalón en lino Olán',
     price: 150000,
     formattedPrice: '$ 150.000',
@@ -211,7 +211,7 @@ export const PRODUCTS: Product[] = [
     isSold: true
   },
   {
-    id: 'blusa-lazo-corta',
+    id: 'blusa-lazo-corta-2',
     name: 'Blusa lazo (corta)',
     price: 150000,
     formattedPrice: '$ 150.000',

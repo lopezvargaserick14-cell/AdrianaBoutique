@@ -13,6 +13,9 @@ import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
 import CheckoutPage from './pages/CheckoutPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import PrivacyPage from './pages/PrivacyPage';
 
 function AppContent() {
   const { isCartOpen, closeCart, openCart } = useCart();
@@ -33,6 +36,9 @@ function AppContent() {
           <Route path="/categoria/:gender" element={<CategoryPage />} />
           <Route path="/producto/:id" element={<ProductPage />} />
           <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </div>
 

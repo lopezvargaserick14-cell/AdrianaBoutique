@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-gray-100 text-black py-24 px-6 md:px-12 text-sm mt-auto">
@@ -19,19 +21,19 @@ export default function Footer() {
         <div className="md:col-span-2 md:col-start-8">
           <h5 className="text-black uppercase tracking-[0.2em] mb-8 text-[10px] font-medium">Atención al Cliente</h5>
           <ul className="space-y-5 font-light text-gray-500 text-sm">
-            <li><a href="#" className="hover:text-black transition-colors">Contacto</a></li>
-            <li><a href="#" className="hover:text-black transition-colors">Envíos y Devoluciones</a></li>
-            <li><a href="#" className="hover:text-black transition-colors">Cuidado de las Prendas</a></li>
-            <li><a href="#" className="hover:text-black transition-colors">FAQS</a></li>
+            <li><Link to="/contact" className="hover:text-black transition-colors">Contacto</Link></li>
+            <li><Link to="/contact" className="hover:text-black transition-colors">Envíos y Devoluciones</Link></li>
+            <li><Link to="/privacy" className="hover:text-black transition-colors">Privacidad</Link></li>
+            <li><Link to="/" className="hover:text-black transition-colors">FAQS</Link></li>
           </ul>
         </div>
         <div className="md:col-span-2">
           <h5 className="text-black uppercase tracking-[0.2em] mb-8 text-[10px] font-medium">La Marca</h5>
           <ul className="space-y-5 font-light text-gray-500 text-sm">
-            <li><a href="#" className="hover:text-black transition-colors">Manifiesto</a></li>
-            <li><a href="#" className="hover:text-black transition-colors">El Taller</a></li>
-            <li><a href="#" className="hover:text-black transition-colors">Sustentabilidad</a></li>
-            <li><a href="#" className="hover:text-black transition-colors">Aviso Legal</a></li>
+            <li><Link to="/about" className="hover:text-black transition-colors">Sobre Nosotros</Link></li>
+            <li><Link to="/about" className="hover:text-black transition-colors">El Taller</Link></li>
+            <li><Link to="/about" className="hover:text-black transition-colors">Sustentabilidad</Link></li>
+            <li><Link to="/privacy" className="hover:text-black transition-colors">Aviso Legal</Link></li>
           </ul>
         </div>
       </div>

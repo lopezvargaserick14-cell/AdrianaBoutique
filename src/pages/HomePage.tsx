@@ -258,7 +258,7 @@ export default function HomePage() {
              </p>
              <div className="flex flex-col md:flex-row gap-4 items-center justify-center">
                <Link 
-                 to="/producto/m6" 
+                 to="/producto/vestido-guacamayo-azul" 
                  className="bg-white text-black px-12 py-5 uppercase tracking-[0.2em] text-[10px] hover:bg-transparent hover:text-white border border-transparent hover:border-white transition-all duration-700 min-w-[200px]"
                >
                  Explorar Pieza
