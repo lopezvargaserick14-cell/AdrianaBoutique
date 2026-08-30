@@ -1,8 +1,31 @@
 {
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Vary",
+          "value": "Accept"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
-      "destination": "/index.html"
-    }
+      "has": [
+        {
+          "type": "header",
+          "key": "Accept",
+          "value": "(?i).*text/markdown.*"
+        }
+      ],
+      "destination": "/api/markdown"
+    },
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/categoria/(.*)", "destination": "/index.html" },
+    { "source": "/producto/(.*)", "destination": "/index.html" },
+    { "source": "/checkout", "destination": "/index.html" },
+    { "source": "/(.*)", "destination": "/api/404" }
   ]
 }

@@ -1,0 +1,12 @@
+# Adriana Barrera - Arte aplicado a la vida
+
+Boutique de ropa pintada a mano. 
+Piezas únicas de arte usables como sombreros, vestidos, blusas y obras originales.
+
+## Rutas
+- `/` : Inicio
+- `/categoria/:gender` : Colecciones
+- `/producto/:id` : Detalle de producto
+- `/checkout` : Carrito
+
+Contáctanos para envíos a Colombia e internacionales.
