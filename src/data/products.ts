@@ -17,6 +17,45 @@ export interface Product {
 
 export const PRODUCTS: Product[] = [
   {
+    id: 'chaqueta-denim-rigido',
+    name: 'Chaqueta en Denim Rígido',
+    price: 250000,
+    formattedPrice: '$ 250.000',
+    category: 'mujer',
+    images: [
+      '/images/products/chaqueta-denim-1.jpeg',
+      '/images/products/chaqueta-denim-2.jpeg',
+      '/images/products/chaqueta-denim-3.jpeg',
+      '/images/products/chaqueta-denim-4.jpeg',
+      '/images/products/chaqueta-denim-5.jpeg'
+    ],
+    description: 'Chaqueta en denim rígido intervenida a mano.',
+    details: ['Material: Denim rígido', 'Técnica: Pintura acrílico de tela con pincel', 'Talla: M', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true,
+    availableSizes: ['M']
+  },
+  {
+    id: 'vestido-reina-naturaleza',
+    name: 'Vestido Reina de la Naturaleza',
+    price: 280000,
+    formattedPrice: '$ 280.000',
+    category: 'mujer',
+    subcategory: 'vestidos',
+    images: [
+      '/images/products/vestido-reina-naturaleza-1.jpeg',
+      '/images/products/vestido-reina-naturaleza-2.jpeg',
+      '/images/products/vestido-reina-naturaleza-3.jpeg'
+    ],
+    description: 'Vestido en Lino Olán con diseño "Reina de la naturaleza".',
+    details: ['Material: Lino Olán con forro interno', 'Escote: Cuadrado', 'Corte: Princesa', 'Talla: L', 'Pintado a mano por Adriana Barrera'],
+    isNew: true,
+    isOneSize: false,
+    hasSizes: true,
+    availableSizes: ['L']
+  },
+  {
     id: 'vestido-guacamayas',
     name: 'Vestido Guacamayas',
     price: 250000,
