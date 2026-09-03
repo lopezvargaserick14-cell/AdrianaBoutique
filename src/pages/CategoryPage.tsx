@@ -41,6 +41,12 @@ export default function CategoryPage() {
     window.scrollTo(0, 0);
   }, [gender]);
 
+  // Ordenar para que los productos vendidos queden al final
+  categoryProducts = [...categoryProducts].sort((a, b) => {
+    if (a.isSold === b.isSold) return 0;
+    return a.isSold ? 1 : -1;
+  });
+
   return (
     <main className="pt-32 pb-24 md:pt-48 md:pb-40 px-6 md:px-12 max-w-[1400px] mx-auto bg-white min-h-screen">
       <SEOTags 

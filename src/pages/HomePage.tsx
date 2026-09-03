@@ -11,13 +11,19 @@ import FAQSection from '../components/ui/FAQSection';
 export default function HomePage() {
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   
-  // Show only the latest 2 products in Novedades de Temporada
-  const newProducts = PRODUCTS.filter(p => p.isNew).slice(-2).reverse();
-  const vestidosProducts = PRODUCTS.filter(p => p.subcategory === 'vestidos').slice(0, 4);
-  const hogarProducts = PRODUCTS.filter(p => p.category === 'hogar').slice(0, 4);
-  const artProducts = PRODUCTS.filter(p => p.category === 'arte').slice(0, 4);
+  const sortProducts = (products: Product[]) => {
+    return [...products].sort((a, b) => {
+      if (a.isSold === b.isSold) return 0;
+      return a.isSold ? 1 : -1;
+    });
+  };
+
+  const newProducts = sortProducts(PRODUCTS.filter(p => p.isNew)).slice(0, 4);
+  const vestidosProducts = sortProducts(PRODUCTS.filter(p => p.subcategory === 'vestidos')).slice(0, 4);
+  const hogarProducts = sortProducts(PRODUCTS.filter(p => p.category === 'hogar')).slice(0, 4);
+  const artProducts = sortProducts(PRODUCTS.filter(p => p.category === 'arte')).slice(0, 4);
   
-  const highlightedProducts = PRODUCTS.filter(p => !p.isNew);
+  const highlightedProducts = sortProducts(PRODUCTS.filter(p => !p.isNew));
 
   return (
     <main className="bg-white overflow-hidden">
