@@ -89,8 +89,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'chaqueta-denim-rigido',
     name: 'Chaqueta en Denim Rígido',
-    price: 250000,
-    formattedPrice: '$ 250.000',
+    price: 160000,
+    formattedPrice: '$ 160.000',
     category: 'mujer',
     images: [
       '/images/products/chaqueta-denim-1.jpeg',
@@ -109,8 +109,8 @@ export const PRODUCTS: Product[] = [
   {
     id: 'vestido-reina-naturaleza',
     name: 'Vestido Reina de la Naturaleza',
-    price: 280000,
-    formattedPrice: '$ 280.000',
+    price: 360000,
+    formattedPrice: '$ 360.000',
     category: 'mujer',
     subcategory: 'vestidos',
     images: [
