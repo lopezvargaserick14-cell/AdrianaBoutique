@@ -351,7 +351,8 @@ export const PRODUCTS: Product[] = [
     isNew: true,
     isOneSize: false,
     hasSizes: true,
-    availableSizes: ['S']
+    availableSizes: ['S'],
+    isSold: true
   },
   {
     id: 'vestido-guacamayo-azul',
